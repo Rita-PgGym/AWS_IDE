@@ -396,14 +396,21 @@ require __DIR__.'/auth.php';
 ## 【Laravel 6回目：View・コンポーネント】12:45
 ### 6. View
 
-【Tips】ここからちょっと複雑になります
+【Tips】MVCモデルのV(View)＝画面表示の部分に入ります！ちょっと複雑になります…がんばろ！
 - Laravel9.1以降CSSフレームワークのBootstrapがデフォルトで選択できなくなった
-- コンポーネント化の知識が必須になった⇒覚えるしかない
-- とはいえ、難しい話ではない！CSSはTailwind　CSSがデフォルトになった
-  <div class="flex justify-between p-4 items-center bg-blue-500 text-white rounded-lg border-2 border-white">
+- コンポーネント化の知識が必須になった⇒覚えるしかないが、難しい話ではない！
+- CSSはTailwind CSSがデフォルトになった⇒Tailwind CSSのCheet Sheetがあるので見てみよう！
+- コンポーネントは、includeで部品を読み込む、みたいにとらえると分かりやすいかも（まだわからんけど）
+
 
 
 ##### 1. /resources/views/components/collection.blade.php を作成
+【Tips】MVCモデルのV(View)に入ります！ちょっと複雑になります…がんばろ！
+-/resources/views/components/ にはよく使うものを部品としてを入れる⇒ここだけ直せばよい(メンテナンス性アップ)
+-表示用のファイルの拡張子は必ず　.blade.php　にする⇒この拡張子にしないと使えない
+
+ 
+- /resources/views/components/　で新規ファイル作成⇒ファイル名はcollection.blade.php
 - 以下のコードを貼り付ける
 ```
 <div class="flex justify-between p-4 items-center bg-blue-500 text-white rounded-lg border-2 border-white">
@@ -414,6 +421,8 @@ require __DIR__.'/auth.php';
 
 
 ##### 2. /resources/views/components/errors.blade.php を作成 
+- /resources/views/components/　で新規ファイル作成⇒ファイル名は　errors.blade.php
+- 入力エラーのチェックの部品を作ろう！一つ部品を作ってそれを再利用していこう！
 - 以下のコードを貼り付ける
 ```
 <!-- resources/views/components/errors.blade.php -->
@@ -434,6 +443,10 @@ require __DIR__.'/auth.php';
 
 
 ##### 3. /resources/views/books.blade.php を作成
+- /resources/views/　で新規ファイル作成⇒ファイル名はbooks.blade.php
+- これは部品ではなくテンプレートを作るよ！
+- このファイルは　上で作った　collection.blade.php　や　errors.blade.php　を読み込んで使うテンプレート
+- <x-app-layout></x-app-layout>　で囲んだところがコンポーネントを読み込むところ（よく分からん）
 - 以下のコードを貼り付ける
 ```
 <!-- resources/views/books.blade.php -->
@@ -536,7 +549,7 @@ require __DIR__.'/auth.php';
 ##### 5. componentファイルとbladeファイルをBuild!!
 - bladeファイルとcomponentファイルを合体させます
 - JS/CSS(TailwindCSS)も同時にBuildされます
-- <重要>　フロント側の修正したら必ず実行してください
+- <重要>　フロント側の修正したら必ず実行してください⇒ブラウザで確認する前にこのコマンドを打つことを習慣にしよう！
 ```
 npm run build
 ```
@@ -548,8 +561,13 @@ npm run build
 
 ---
 
-## 【Laravel 7回目：コントローラー①（登録処理）】
+## 【Laravel 7回目：コントローラー①（登録処理）】(28:00)
 ### 7. Controller
+【Tips】Controllerは処理！
+- Controller　には、PHPやJSで書いていたif文、for文などでcodingしていた処理を書きます！
+  
+
+
 ##### 1. app/Http/Controllers/BookController.php を開く
 - このControllerでValidatorを使えるようにする
 - このControllerでAuthを使えるようにする
@@ -604,6 +622,18 @@ public function store(Request $request)
    //** ↑ 上をコピー ↑ **
 }
 ```
+【Tips】バリデーション
+- Validator　部分は、基本コピペでOK！
+- 項目(name、number等）は自分が作りたいものに合わせて修正したり、追加したりすればOK
+
+【Tips】バリデーションエラー
+- ここも、基本コピペでOK！
+- 戻す先　return redirect('/')　を自分の戻したいところに変えればOK！
+
+【Tips】 登録処理部分(Eloquentモデル)
+-  $books = new Book;　テーブル名はbooks、モデルはBook、これはテーブルにアクセスするためのルール！
+-　飛んできたものをbooksテーブルのそれぞれの値に渡し、$books->save();　でテーブルに保存する
+-　SQL文を打たなくていい、ということです・・・
 
 
 ##### 3. /app/Http/Controllers/BookController.php を開く
