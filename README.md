@@ -6,7 +6,7 @@
 #### 環境：PHP8.2.15 Amazon Linux 2023 対象
 
 ---
-### Laravel 2回目：DB＋phpMyAdminの設定
+## Laravel 2回目：DB＋phpMyAdminの設定
 ### MariaDB 再構築
 ##### MariaDBデフォルト確認
 ```
