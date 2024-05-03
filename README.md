@@ -65,7 +65,8 @@ sudo mv composer.phar /usr/bin/composer
 ```
 composer
 ```
-- ★COMPOSERという文字がでっかく表示されていればOK！
+※COMPOSERという文字がでっかく表示されていればOK！
+
 
 
 ### Laravelインストール
@@ -169,7 +170,7 @@ cd ..
 
 
 
-## Laravel 2回目：DB＋phpMyAdminの設定
+## 【Laravel 3回目：Bleeze/認証機能】
 ### Auth( ユーザー登録・認証画面とテンプレート作成 )
 ―  Laravel0.x ~ 以降対応
 -  laravel/breeze のインストール
