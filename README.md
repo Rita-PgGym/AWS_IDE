@@ -262,10 +262,11 @@ php artisan make:migration create_books_table --create=books
 【確認】databases/migrations/にyyyy_mm_dd_hhmmss_create_books_table.php　が作成されていることを確認しよう！
 
 【予備知識】
-　トランザクションテーブル：データが積みあがっていく（増えていく）
-  マスターテーブル：データは固定 (例)都道府県テーブルなど
+- トランザクションテーブル：データが積みあがっていく（増えていく）
+- マスターテーブル：データは固定 (例)都道府県テーブルなど
 
-
+ 
+  
 
 
 ##### 2. [年]_[月]_[日]_[時分秒]_create_books_table.phpが作成されます
