@@ -3,7 +3,9 @@
 #### 更新日：
 #### 環境：PHP8.2.15 Amazon Linux 2023 対象
 
+
 ---
+
 ## 【Laravel 2回目：DB＋phpMyAdminの設定】
 ### 2. MariaDB 再構築
 ##### MariaDBデフォルト確認
@@ -164,9 +166,8 @@ cd ..
 - 5.5 phpMyAdmin画面が表示されたら： ユーザー名・パスワードともに「root」を入力してログイン
 - 5.6 ログインできればOK
 
+
 ---
-
-
 
 ## 【Laravel 3回目：Bleeze/認証機能】
 ### 3. Auth( ユーザー登録・認証画面とテンプレート作成 )
@@ -250,7 +251,6 @@ npm run build
 
 ---
 
-
 ## 【Laravel 4回目：Laravel/マイグレーション】
 ### 4. データ構造を作成（テーブル作成） 
 ##### 1. booksテーブルを作成（マイグレーションファイル作成）
@@ -330,9 +330,8 @@ php artisan make:model Book -cr
 
 [Laravel Document モデル](https://readouble.com/laravel/10.x/ja/eloquent.html)
 
+
 ---
-
-
 
 ## 【Laravel 5回目：ルーティング】
 ### 5. ルート定義（ルーティング）
@@ -387,9 +386,7 @@ require __DIR__.'/auth.php';
 ###### [ 参考Documents ]
 [Laravel Document ルーティング](https://readouble.com/laravel/10.x/ja/routing.html)
 
-
 ---
-
 
 ## 【Laravel 6回目：View・コンポーネント】12:45
 ### 6. View
@@ -555,8 +552,6 @@ npm run build
 ###### 参考Documents
 [Laravel Document View](https://readouble.com/laravel/10.x/ja/views.html)
 
-
-
 ---
 
 ## 【Laravel 7回目：コントローラー①（登録処理）】(28:00)
@@ -633,6 +628,7 @@ public function store(Request $request)
 -  飛んできたものをbooksテーブルのそれぞれの値に渡し、$books->save();　でテーブルに保存する
 -  SQL文を打たなくていい、ということです
 
+---
 
 ## 【Laravel 8回目：コントローラー②（表示処理）】
 ##### 3. /app/Http/Controllers/BookController.php を開く
@@ -678,6 +674,7 @@ public function index() {
 -  Laravel　ディレクティブ　で検索してみよう！
 -   (count($books) > 0)　で　count関数を使って　$books　がいくつなのか（つまりレコード数はいくつかのか）を数えて0より大きければ　foreach関数でその数分だけ回す
 
+---
 
 ## 【Laravel 9回目： コントローラー③（削除処理）】
 ##### 5. /resources/views/components/collection.blade.php を開く
@@ -747,7 +744,8 @@ php artisan route:list -v
 
 
 
---- 
+---
+
 ## 【Laravel 10回目： コントローラー④（更新処理）】
 ### 8. 更新機能を作成 
 ##### 1. [更新機能] view画面を作成
@@ -908,8 +906,8 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 
 
----
 
+---
 
 ## 【Laravel 11回目： Laravel 11回目： ページネーション】
 ### 9. Pagenation機能
@@ -938,8 +936,13 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 ```
 
 
+---
 
 ## 【Laravel 12回目： Auth：認証しないと見れない設定】
+
+
+---
+
 
 ## 【Laravel  13回目：自分が登録したデータのみ（表示・更新・削除）1ｘ1】
 ### 10. ユーザーがログインしたらユーザーが登録した本のみ表示
