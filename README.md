@@ -7,7 +7,7 @@
 
 ---
 
-### MaryaDB 再構築
+### MariaDB 再構築
 ##### MariaDBデフォルト確認
 ```
 sudo yum list installed | grep mariadb
@@ -49,10 +49,16 @@ exit;
 ---
 
 
-### Composerインストール(3行一気にOK)
+### Composerインストール(3行一気にOK) ★1行ずつやる
 ```
 curl -sS https://getcomposer.org/installer | php
+```
+
+```
 sudo mv composer.phar /usr/bin/composer
+```
+
+```
 composer
 ```
 
