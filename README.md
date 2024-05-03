@@ -33,7 +33,8 @@ sudo systemctl is-enabled mariadb
 ```
 
 ##### DB接続確認
-- exitの後にはセミコロン;忘れないでね！
+※exitの後にはセミコロン;忘れないでね！
+
 
 ```
 mysql -u root -p
