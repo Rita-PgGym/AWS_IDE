@@ -52,7 +52,7 @@ exit;
 ---
 
 
-### Composerインストール(3行一気にOK) ★1行ずつやる
+### Composerインストール(3行一気にOK) 　【補足】1行ずつやる
 
 ```
 curl -sS https://getcomposer.org/installer | php
@@ -65,7 +65,7 @@ sudo mv composer.phar /usr/bin/composer
 ```
 composer
 ```
-★COMPOSERという文字がでっかく表示されていればOK！
+【確認】COMPOSERという文字がでっかく表示されていればOK！
 
 
 
@@ -212,7 +212,7 @@ npm run build
 php artisan migrate
 ```
 
-ログイン機能・画面が作成されました、画面で確認！。
+【確認】ログイン機能・画面が作成されました、画面で確認！。
 
 
 ---
@@ -242,12 +242,12 @@ php artisan migrate
 @endif
 ```
 
-★画面を変えたのでnpm run buildを実行！
+【確認】画面を変えたのでnpm run buildを実行しよう！
 ```
 npm run build
 ```
 
-★画面を変えたのでLogin画面とRegister画面の右上にLoginとRegister　リンクが追加されていることを確認！
+【確認】Login画面とRegister画面の右上にLoginとRegister　リンクが追加されていることを確認しよう！
 
 
 ---
@@ -259,6 +259,13 @@ npm run build
 ```
 php artisan make:migration create_books_table --create=books
 ```
+【確認】databases/migrations/にyyyy_mm_dd_hhmmss_create_books_table.php　が作成されていることを確認しよう！
+
+【予備知識】
+　トランザクションテーブル：データが積みあがっていく（増えていく）
+  マスターテーブル：データは固定 (例)都道府県テーブルなど
+
+
 
 
 ##### 2. [年]_[月]_[日]_[時分秒]_create_books_table.phpが作成されます
