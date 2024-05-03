@@ -745,7 +745,7 @@ php artisan route:list -v
 
 ---
 
-## 【Laravel 10回目： コントローラー④（更新処理）】
+## 【Laravel 10回目： コントローラー④（更新処理）】(17:00)
 ### 8. 更新機能を作成 
 ##### 1. [更新機能] view画面を作成
 - /resources/views/booksedit.blade.php を新規作成
@@ -900,7 +900,10 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
         
         //** ↑ 上をコピー ↑ **!
     }
-```
+
+【確認】 通し確認
+-  ここまででCRUDができるようになっているので通しで確認してみよう！Create⇒Read⇒Update⇒Delete
+
 
 ---
 
@@ -910,6 +913,8 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 ##### 1. コントローラ：indexメソッドの修正
 - BookController.phpの ***indexメソッド*** に以下コードを上書き
 - paginate(3); の箇所だけ変わります
+- paginate(表示件数); ()の中に何件表示するかを書く
+
 ```
     public function index()
     {
@@ -923,7 +928,9 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 ##### 2. Viewにリンクを生成するコードを追加
 - books.blade.php に 以下コードを追加します。
--  `<!--右側エリア[START]-->`の下くらいに追加
+- 右側エリアの一番下にページ送りを表示したいので右側エリアの最後の@endifのあとに追加
+- linksメソッドを使う
+
 ```
         <div>
             {{ $books->links()}}
@@ -933,15 +940,20 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 ---
 
-## 【Laravel 12回目： Auth：認証しないと見れない設定】
+## 【Laravel 12回目： Auth：認証しないと見れない設定】(11:54)
+- ログアウトして　https://***.amazonaws.com/booksedit/2　と叩くと見えてしまう(最後の数字はbooksテーブルに存在しているレコードのID)
+- この状態に対してログインしたユーザーにしか見せないようにす（PHPではセッションを使って実現していた部分）⇒Laravelはこの機能が準備してある
+- ->middleware(['auth']) を追加すれば簡単にできる
 
 
 ---
 
 
-## 【Laravel  13回目：自分が登録したデータのみ（表示・更新・削除）1ｘ1】
+## 【Laravel  13回目：自分が登録したデータのみ（表示・更新・削除）1ｘ1】(20:00)
 ### 10. ユーザーがログインしたらユーザーが登録した本のみ表示
 - １ユーザー ✕ １サービス
+- phpMyAdminではなく、migrationファイルから変更することが大事！
+
 
 ##### 1. ユーザーidを登録できるようにbooksテーブルを変更
 - /database/migrations/[yyyy_mm_dd_hhiiss]_create_books_table.php に以下***１行を追加します***。
@@ -956,9 +968,13 @@ php artisan migrate:refresh
 ```
 
 ##### 3．再構築されたbooksテーブルを確認 
+【確認】 テストデータが消えている
+-  refresh　はresetして再構築しているのでテストデータが消えている⇒booksデータもuserデータも消えているので再度登録すること
+
+
 phpMyAdmin
 ```
-http://localhost:8080/
+http://localhost:8080/　　⇒なぜlocalhost:8080/　なのか不明・・・(間違い？)
 ```
 
 
