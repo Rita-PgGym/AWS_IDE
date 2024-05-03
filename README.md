@@ -1,4 +1,4 @@
----
+![image](https://github.com/Rita-PgGym/AWS_IDE/assets/159682878/3af3939d-63ab-46f9-b64c-f6c4002162ea)---
 
 # Laravel.10:CURD実装版
 #### 作成日：2024-05-01
@@ -322,7 +322,7 @@ php artisan make:model Book -cr
 【確認】生成されたファイルを確認しよう！次の2つのファイルが生成されます。
 
 - /app/models/Book.php が作成されます。これはMVCモデルのM(Model)です。
-- /app/Http/Controllers/BookController.php が生成されます＋空のメソッドも自動で生成。これはMVCモデルのC(Contorler)です。ここには処理を書くところです。
+- /app/Http/Controllers/BookController.php が生成されます＋空のメソッドも自動で生成されます。これはMVCモデルのC(Contorler)です。ここには処理を書くところです。
 
 ###### [ 参考Documents ]
 
@@ -336,7 +336,7 @@ php artisan make:model Book -cr
 
 
 
-## 【Laravel 5回目：Laravel/マイグレーション】
+## 【Laravel 5回目：ルーティング】
 ### 5. ルート定義（ルーティング）
 ##### 1. /routes/web.php に 以下コードを貼り付けます。
 ```
@@ -386,7 +386,7 @@ require __DIR__.'/auth.php';
 ---
 
 
-
+## 【Laravel 6回目：View・コンポーネント】
 ### 6. View
 ##### 1. /resources/views/components/collection.blade.php を作成
 - 以下のコードを貼り付ける
@@ -533,7 +533,7 @@ npm run build
 
 ---
 
-
+## 【Laravel 7回目：コントローラー①（登録処理）】
 ### 7. Controller
 ##### 1. app/Http/Controllers/BookController.php を開く
 - このControllerでValidatorを使えるようにする
@@ -686,7 +686,7 @@ php artisan route:list -v
 
 --- 
 
-
+## 【Laravel 8回目：コントローラー②（表示処理）】
 ### 8. 更新機能を作成 
 ##### 1. [更新機能] view画面を作成
 - /resources/views/booksedit.blade.php を新規作成
@@ -850,7 +850,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 
 
-
+## 【Laravel 9回目： コントローラー③（削除処理）】
 ### 9. Pagenation機能
 
 ##### 1. コントローラ：indexメソッドの修正
@@ -876,9 +876,13 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
         </div>
 ```
 
+## 【Laravel 10回目： コントローラー④（更新処理）】
 
+## 【Laravel 11回目： Laravel 11回目： ページネーション】
 
+## 【Laravel 12回目： Auth：認証しないと見れない設定】
 
+## 【Laravel  13回目：自分が登録したデータのみ（表示・更新・削除）1ｘ1】
 ### 10. ユーザーがログインしたらユーザーが登録した本のみ表示
 - １ユーザー ✕ １サービス
 
