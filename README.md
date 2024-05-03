@@ -241,10 +241,12 @@ php artisan migrate
 @endif
 ```
 
-※画面を変えたのでnpm run buildを実行！
+★画面を変えたのでnpm run buildを実行！
 ```
 npm run build
 ```
+
+★画面を変えたのでLogin画面とRegister画面の右上にLoginとRegister　リンクが追加されていることを確認！
 
 
 ---
