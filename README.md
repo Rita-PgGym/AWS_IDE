@@ -6,6 +6,13 @@
 
 ---
 
+## 【Laravel 1回目： AWS AcademyのCloud9開発環境構築 と Laravel動作まで】(20:00)
+### 1. 開発環境構築
+##### 
+
+
+---
+
 ## 【Laravel 2回目：DB＋phpMyAdminの設定】
 ### 2. MariaDB 再構築
 ##### MariaDBデフォルト確認
