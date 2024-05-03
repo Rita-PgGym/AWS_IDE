@@ -6,8 +6,8 @@
 #### 環境：PHP8.2.15 Amazon Linux 2023 対象
 
 ---
-## Laravel 2回目：DB＋phpMyAdminの設定
-### MariaDB 再構築
+## 【Laravel 2回目：DB＋phpMyAdminの設定】
+### 2. MariaDB 再構築
 ##### MariaDBデフォルト確認
 ```
 sudo yum list installed | grep mariadb
@@ -33,7 +33,7 @@ sudo systemctl is-enabled mariadb
 ```
 
 ##### DB接続確認
-※exitの後にはセミコロン;忘れないでね！
+★exitの後にはセミコロン;忘れないでね！
 
 
 ```
@@ -65,7 +65,7 @@ sudo mv composer.phar /usr/bin/composer
 ```
 composer
 ```
-※COMPOSERという文字がでっかく表示されていればOK！
+★COMPOSERという文字がでっかく表示されていればOK！
 
 
 
@@ -171,7 +171,7 @@ cd ..
 
 
 ## 【Laravel 3回目：Bleeze/認証機能】
-### Auth( ユーザー登録・認証画面とテンプレート作成 )
+### 3. Auth( ユーザー登録・認証画面とテンプレート作成 )
 ―  Laravel0.x ~ 以降対応
 -  laravel/breeze のインストール
 - 【注意】Laraveのバージョンが違うとErrorになります！！
@@ -218,7 +218,8 @@ php artisan migrate
 ---
 
 
-### 3．Login画面とRegister画面にリンクを追加( 2ファイル修正)
+#### 8．Login画面とRegister画面にリンクを追加( 2ファイル修正)
+
 - /resources/views/auth/register.blade.php
 - /resources/views/auth/login.blade.php
 
@@ -252,14 +253,15 @@ npm run build
 ---
 
 
+## 【Laravel 4回目：Laravel/マイグレーション】
 ### 4. データ構造を作成（テーブル作成） 
-##### １．booksテーブルを作成（マイグレーションファイル作成）
+##### 1. booksテーブルを作成（マイグレーションファイル作成）
 ```
 php artisan make:migration create_books_table --create=books
 ```
 
 
-##### 2．[年]_[月]_[日]_[時分秒]_create_books_table.phpが作成されます
+##### 2. [年]_[月]_[日]_[時分秒]_create_books_table.phpが作成されます
 - /database/migrations/フォルダの中に生成されます
 - 生成されたファイルを開き、public function up(){...}の中を追加修正
 ```
