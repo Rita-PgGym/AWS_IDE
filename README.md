@@ -338,6 +338,13 @@ php artisan make:model Book -cr
 
 ## 【Laravel 5回目：ルーティング】
 ### 5. ルート定義（ルーティング）
+
+【Tips】ルーティング
+- URLと「処理」or「画面」を紐づけすること
+- cms/routes/web.php　がルーティングしてくれる
+- ルーティングとはURLを叩いたら、どのファイルに紐づけること
+
+
 ##### 1. /routes/web.php に 以下コードを貼り付けます。
 ```
 <?php
@@ -386,8 +393,16 @@ require __DIR__.'/auth.php';
 ---
 
 
-## 【Laravel 6回目：View・コンポーネント】
+## 【Laravel 6回目：View・コンポーネント】12:45
 ### 6. View
+
+【Tips】ここからちょっと複雑になります
+- Laravel9.1以降CSSフレームワークのBootstrapがデフォルトで選択できなくなった
+- コンポーネント化の知識が必須になった⇒覚えるしかない
+- とはいえ、難しい話ではない！CSSはTailwind　CSSがデフォルトになった
+  <div class="flex justify-between p-4 items-center bg-blue-500 text-white rounded-lg border-2 border-white">
+
+
 ##### 1. /resources/views/components/collection.blade.php を作成
 - 以下のコードを貼り付ける
 ```
