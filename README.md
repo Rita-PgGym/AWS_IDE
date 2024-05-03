@@ -743,7 +743,6 @@ php artisan route:list -v
 [Laravel Document コントロール](https://readouble.com/laravel/10.x/ja/controllers.html)
 
 
-
 ---
 
 ## 【Laravel 10回目： コントローラー④（更新処理）】
@@ -902,10 +901,6 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
         //** ↑ 上をコピー ↑ **!
     }
 ```
-
-
-
-
 
 ---
 
