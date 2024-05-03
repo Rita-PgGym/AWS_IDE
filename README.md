@@ -261,9 +261,10 @@ php artisan make:migration create_books_table --create=books
 ```
 【確認】databases/migrations/にyyyy_mm_dd_hhmmss_create_books_table.php　が作成されていることを確認しよう！
 
-【予備知識】
+【Tips】
 - トランザクションテーブル：データが積みあがっていく（増えていく）
 - マスターテーブル：データは固定 (例)都道府県テーブルなど
+
 
  
   
@@ -297,7 +298,10 @@ php artisan migrate
 ```
 
 
+
 ##### 4．MySQL DBに作成されたテーブルを確認 (php+MyAdminの画面で)
+【確認】phpMyAdminでc9の中のbooksテーブルの構造に追加した4行があることを確認しよう！
+
 phpMyAdmin URL例： 
 ```
 https://＊＊＊＊＊＊.cloud9.us-east-1.amazonaws.com/phpMyAdmin/
@@ -310,10 +314,15 @@ https://＊＊＊＊＊＊.cloud9.us-east-1.amazonaws.com/phpMyAdmin/
 php artisan make:model Book -cr
 ```
 
+【Tips】テーブル名とモデル名
+- テーブル名　終わりにsが付く　（例）users、books、items
+- モデル名　終わりのsをとって先頭文字を大文字にする　　（例）User、Book、Item
 
 ##### 6．生成されたファイルを確認
-- /app/models/Book.php に作成されます。
-- /app/Http/Controllers/BookController.php に生成されます＋メソッドも自動で生成
+【確認】生成されたファイルを確認しよう！次の2つのファイルが生成されます。
+
+- /app/models/Book.php が作成されます。これはMVCモデルのM(Model)です。
+- /app/Http/Controllers/BookController.php が生成されます＋空のメソッドも自動で生成。これはMVCモデルのC(Contorler)です。ここには処理を書くところです。
 
 ###### [ 参考Documents ]
 
@@ -327,7 +336,7 @@ php artisan make:model Book -cr
 
 
 
-
+## 【Laravel 5回目：Laravel/マイグレーション】
 ### 5. ルート定義（ルーティング）
 ##### 1. /routes/web.php に 以下コードを貼り付けます。
 ```
