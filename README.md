@@ -241,6 +241,11 @@ php artisan migrate
 @endif
 ```
 
+※画面を変えたのでnpm run buildを実行！
+```
+npm run build
+```
+
 
 ---
 
