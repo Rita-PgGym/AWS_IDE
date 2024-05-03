@@ -1,4 +1,3 @@
-![image](https://github.com/Rita-PgGym/AWS_IDE/assets/159682878/20fb0974-d47a-46d0-8538-d8b15bbe0345)![image](https://github.com/Rita-PgGym/AWS_IDE/assets/159682878/54399c40-e7ea-4bb3-bc08-6da25cc92f9f)
 # Laravel.10:CURD実装版
 #### 作成日：2024-05-01
 #### 更新日：
