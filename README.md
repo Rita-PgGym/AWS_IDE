@@ -21,7 +21,7 @@ sudo systemctl start mariadb
 ```
 sudo mysql_secure_installation
 ```
-※最初コマンドで聞かれたら「空」のPasswordでEnter、NewPassword「root」を次に求められます。後は基本「Y」を入力！
+※最初コマンドで聞かれたら「空」のPasswordでEnter、Yes/Noを聞かれたら基本「Y」、NewPasswordは「root」にする。
 
 ##### MaridaDBの自動起動を有効化
 ```
@@ -33,6 +33,8 @@ sudo systemctl is-enabled mariadb
 ```
 
 ##### DB接続確認
+- exitの後にはセミコロン;忘れないでね！
+
 ```
 mysql -u root -p
 ```
@@ -50,6 +52,7 @@ exit;
 
 
 ### Composerインストール(3行一気にOK) ★1行ずつやる
+
 ```
 curl -sS https://getcomposer.org/installer | php
 ```
@@ -61,6 +64,8 @@ sudo mv composer.phar /usr/bin/composer
 ```
 composer
 ```
+- ★COMPOSERという文字がでっかく表示されていればOK！
+
 
 ### Laravelインストール
 - バージョン指定する場合 → composer create-project "laravel/laravel=10.*" cms
