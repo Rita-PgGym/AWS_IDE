@@ -1,4 +1,4 @@
-
+![image](https://github.com/Rita-PgGym/AWS_IDE/assets/159682878/20fb0974-d47a-46d0-8538-d8b15bbe0345)![image](https://github.com/Rita-PgGym/AWS_IDE/assets/159682878/54399c40-e7ea-4bb3-bc08-6da25cc92f9f)
 # Laravel.10:CURD実装版
 #### 作成日：2024-05-01
 #### 更新日：
@@ -631,12 +631,14 @@ public function store(Request $request)
 
 【Tips】 登録処理部分(Eloquentモデル)
 -  $books = new Book;　テーブル名はbooks、モデルはBook、これはテーブルにアクセスするためのルール！
--　飛んできたものをbooksテーブルのそれぞれの値に渡し、$books->save();　でテーブルに保存する
--　SQL文を打たなくていい、ということです・・・
+-  飛んできたものをbooksテーブルのそれぞれの値に渡し、$books->save();　でテーブルに保存する
+-  SQL文を打たなくていい、ということです
 
 
+## 【Laravel 8回目：コントローラー②（表示処理）】
 ##### 3. /app/Http/Controllers/BookController.php を開く
 - [データ取得・表示処理] public function index() 内に以下を追加
+
 ```
 public function index() {
    //** ↓ 下をコピー ↓ **    
@@ -649,6 +651,11 @@ public function index() {
     //** ↑ 上をコピー ↑ **
 }
 ```
+
+【Tips】 データの取得処理
+-  Book::　でbooksテーブルにアクセスできる
+-  orderBy('カラム名', '昇順・降順の指定')　でソート指定する
+-  get()でデータを取得する
 
 
 ##### 4. /resources/views/books.blade.php を開く
@@ -666,8 +673,14 @@ public function index() {
     <!--右側エリア[[END]-->     
 ```
 
+【Tips】 データの表示理
+-  bladeテンプレートでは　@if、@endif、@for、@endfor、@foreach、@endforeach　が用意されている
+-  blade.php　(テンプレート)　の中で使える関数のことを　ディレクティブといいます（よく分からん）
+-  Laravel　ディレクティブ　で検索してみよう！
+-   (count($books) > 0)　で　count関数を使って　$books　がいくつなのか（つまりレコード数はいくつかのか）を数えて0より大きければ　foreach関数でその数分だけ回す
 
 
+## 【Laravel 9回目： コントローラー③（削除処理）】
 ##### 5. /resources/views/components/collection.blade.php を開く
 - collection.blade.php 内のcomponentを以下CODEに ***全て上書き！！*** 
 ```
@@ -700,6 +713,9 @@ public function index() {
 
 </div>
 ```
+【Tips】 CSRF攻撃対策
+-  クロスサイトリクエストフォージェリ攻撃からアプリケーションを保護するためにPOSTの時は必ず<form>タグ内に　@csrfと書く
+-  これもblade.php　(テンプレート)　の中で使える関数、ディレクティブです
 
 
 
@@ -722,6 +738,10 @@ public function destroy(Book $book)
 php artisan route:list -v
 ```
 
+【Tips】 ブラウザのソースコードを見てみよう！
+-  PHPはサーバー上でcode生成しし、その結果がブラウザに送付されてくる。ソースコードを見ると分かりやすい
+
+
 ###### [ 参考Documents ]
 
 [Laravel Document コントロール](https://readouble.com/laravel/10.x/ja/controllers.html)
@@ -729,8 +749,7 @@ php artisan route:list -v
 
 
 --- 
-
-## 【Laravel 8回目：コントローラー②（表示処理）】
+## 【Laravel 10回目： コントローラー④（更新処理）】
 ### 8. 更新機能を作成 
 ##### 1. [更新機能] view画面を作成
 - /resources/views/booksedit.blade.php を新規作成
@@ -893,8 +912,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 ---
 
 
-
-## 【Laravel 9回目： コントローラー③（削除処理）】
+## 【Laravel 11回目： Laravel 11回目： ページネーション】
 ### 9. Pagenation機能
 
 ##### 1. コントローラ：indexメソッドの修正
@@ -920,9 +938,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
         </div>
 ```
 
-## 【Laravel 10回目： コントローラー④（更新処理）】
 
-## 【Laravel 11回目： Laravel 11回目： ページネーション】
 
 ## 【Laravel 12回目： Auth：認証しないと見れない設定】
 
