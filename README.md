@@ -995,11 +995,11 @@ public function index() {
 【Tips】 ブラウザのソースコードを見てみよう！
 -  PHPはサーバー上でcode生成し、その結果がブラウザに送付されてくる。何がサーバから送付されてきているのかを確認するにはソースコードを見ると分かりやすい
 -  関数URL()を使ったので、サーバー側で処理されてその結果が以下のようにブラウザに送付されてきている
-<form action="https://d6e343431c9e45b6b3447d12b9076907.vfs.cloud9.us-east-1.amazonaws.com/booksedit/2" method="POST">
+'<form action="https://d6e343431c9e45b6b3447d12b9076907.vfs.cloud9.us-east-1.amazonaws.com/booksedit/2" method="POST">'
 
 
 -  @csrf　を書いたので、サーバー側で処理されてその結果が以下のようにブラウザに送付されてきている
- <input type="hidden" name="_token" value="5pDAN4iJE5TH9Zy7FZItpLSfgdHNu8L7CZyc7bqW" autocomplete="off">
+' <input type="hidden" name="_token" value="5pDAN4iJE5TH9Zy7FZItpLSfgdHNu8L7CZyc7bqW" autocomplete="off">'
 
 
 ##### (6)  /app/Http/Controllers/BookController.php を開く
