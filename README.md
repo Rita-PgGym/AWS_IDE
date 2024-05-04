@@ -1,4 +1,3 @@
-![image](https://github.com/Rita-PgGym/AWS_IDE/assets/159682878/810d277f-3bfe-4cac-80ab-ae4273038ad0)#### 作成日：2024-05-01
 #### 更新日：
 #### 環境：PHP8.2.15 Amazon Linux 2023 対象
 
