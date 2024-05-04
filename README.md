@@ -845,8 +845,8 @@ use Auth;       //この2行を追加！
 ##### (2) /app/Http/Controllers/BookController.php を開く
 - [データ登録処理] public function store の中に以下を追加
 【Tips】public function storeについて…
-- 'store(Request $request)' この書き方はお作法なので丸暗記
--  変数　$request　にPOST/GETのデータが入ってきます
+-　store(Request $request) この書き方はお作法なので丸暗記
+-　変数　$request　にPOST/GETのデータが入ってきます
 
 ```
 public function store(Request $request)
@@ -885,8 +885,8 @@ public function store(Request $request)
 ```
 【Tips】バリデーション部分
 - validator　部分は、基本コピペでOK！
-- '$request->all()'で すべてのデータ(name、emailとか)が飛んできて受け取っている
--　項目''item_name' => 'required|min:3|max:255'' は、'item_name'が必須で文字数が3～255であることを示している
+- $request->all() で すべてのデータ(name、emailとか)が飛んできて受け取っている
+-　項目'item_name' => 'required|min:3|max:255' は、'item_name'が必須で文字数が3～255であることを示している
 - 項目(name、number等）は自分が作りたいデータに合わせて修正したり、追加したりすればOK
 
 【Tips】バリデーションエラー部分
@@ -894,7 +894,7 @@ public function store(Request $request)
 - 戻す先　return redirect('/')　を自分の戻したいところに変えればOK！
 
 【Tips】 登録処理部分(Eloquentモデル)
--  '$books = new Book;'　テーブル名はbooks、モデルはBook、これはテーブルにアクセスするためのルール！
+-  $books = new Book;　テーブル名はbooks、モデルはBook、これはテーブルにアクセスするためのルール！
 -  飛んできたものをbooksテーブルのそれぞれの値に渡し、$books->save();　でテーブルに保存する
 -  SQL文を打たなくてテーブルにデータを登録できてしまう ということです
 
@@ -918,9 +918,10 @@ public function index() {
 ```
 
 【Tips】 データの取得処理
--  'Book::'　でbooksテーブルにアクセスできる
--  'orderBy('カラム名', '昇順・降順の指定')'でソート指定する
--  'get()'でデータを取得する
+-  Book::　でbooksテーブルにアクセスする
+-  orderBy('カラム名', '昇順・降順の指定') でソート指定する
+-  get() でデータを取得する
+-  orderByメソッドとgetメソッドでデータを　アロー　->　でつなぐことによって組み合わせて実施している
 
 
 ##### (4)  /resources/views/books.blade.php を開く
@@ -938,15 +939,15 @@ public function index() {
     <!--右側エリア[[END]-->     
 ```
 
-【Tips】 データの表示理
+【Tips】 テーブルのデータの表示
 -  bladeテンプレートでは　@if、@endif、@for、@endfor、@foreach、@endforeach　が用意されている
 -  blade.php　(テンプレート)　の中で使える関数のことを　ディレクティブといいます（よく分からん）
 -  Laravel　ディレクティブ　で検索してみよう！
 -   (count($books) > 0)　で　count関数を使って　$books　がいくつなのか（つまりレコード数はいくつかのか）を数えて0より大きければ　foreach関数でその数分だけ回す
-
+-   <x-コンポーネント名>{{変数}} </x-コンポーネント名>　によって{{変数}}がコンポーネントの変数$slotに渡される
 ---
 
-## 【Laravel 9回目： コントローラー③（削除処理）】
+## 【Laravel 9回目： コントローラー③（削除処理）】(19:20)
 ##### (5)  /resources/views/components/collection.blade.php を開く
 - collection.blade.php 内のcomponentを以下CODEに ***全て上書き！！*** 
 ```
@@ -979,10 +980,26 @@ public function index() {
 
 </div>
 ```
-【Tips】 CSRF攻撃対策
--  クロスサイトリクエストフォージェリ攻撃からアプリケーションを保護するためにPOSTの時は必ず<form>タグ内に　@csrfと書く
--  これもblade.php　(テンプレート)　の中で使える関数、ディレクティブです
+【Tips】1つ目の<div>タグ内は更新ボタン
+-  url('booksedit/'.$id)　では、文字　booksedit/　と　変数$idをドットでつなげて、booksedit/2　とか　booksedit/3　にしてどのidのデータを更新するか指定している
+-  関数url()は、　～.com　までを自動で取得し、そのあとにカッコ内の文字をくっつけてくれる
 
+【Tips】2つ目の<div>タグ内は削除ボタン
+-  url('book/'.$id)　では、文字　book/　と　変数$idをドットでつなげて、book/2　とか　book/3　にしてどのidのデータを更新するか指定している
+-  Laravelでは、deleteメソッドが用意されているので @method('DELETE')と書く
+
+【Tips】 CSRF攻撃対策
+-  クロスサイトリクエストフォージェリ攻撃からアプリケーションを保護するためにPOSTの時は必ず<form>タグ内に　@csrf　と書くこと！
+-  @がついているので、これもblade.php　(テンプレート)　の中で使える関数、ディレクティブです
+
+【Tips】 ブラウザのソースコードを見てみよう！
+-  PHPはサーバー上でcode生成し、その結果がブラウザに送付されてくる。何がサーバから送付されてきているのかを確認するにはソースコードを見ると分かりやすい
+-  関数URL()を使ったので、サーバー側で処理されてその結果が以下のようにブラウザに送付されてきている
+<form action="https://d6e343431c9e45b6b3447d12b9076907.vfs.cloud9.us-east-1.amazonaws.com/booksedit/2" method="POST">
+
+
+-  @csrf　を書いたので、サーバー側で処理されてその結果が以下のようにブラウザに送付されてきている
+ <input type="hidden" name="_token" value="5pDAN4iJE5TH9Zy7FZItpLSfgdHNu8L7CZyc7bqW" autocomplete="off">
 
 
 ##### (6)  /app/Http/Controllers/BookController.php を開く
@@ -1004,8 +1021,6 @@ public function destroy(Book $book)
 php artisan route:list -v
 ```
 
-【Tips】 ブラウザのソースコードを見てみよう！
--  PHPはサーバー上でcode生成しし、その結果がブラウザに送付されてくる。ソースコードを見ると分かりやすい
 
 
 ###### [ 参考Documents ]
