@@ -1188,6 +1188,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
         
         //** ↑ 上をコピー ↑ **!
     }
+```
 
 【確認】 通し確認
 -  ここまででCRUDができるようになっているので通しで確認してみよう！Create⇒Read⇒Update⇒Delete
