@@ -1029,8 +1029,12 @@ php artisan route:list -v
 
 ---
 
-## 【Laravel 10回目： コントローラー④（更新処理）】(17:00)
+## 【Laravel 10回目： コントローラー④（更新処理）】(17:10)
 ### 8. 更新機能を作成 
+【やること】
+-  まず更新画面を作ろう！登録画面と更新画面は似ているので登録画面をコピーして使うことが多い。基本的には登録する項目と更新する項目は同じなので、再利用することが多い
+-  流れとしては、すでにテーブルに登録されてるデータを1レコード分を抽出して、入力項目に変数を埋め込んで表示されます（ちょっと分からんけど）
+
 ##### (1) [更新機能] view画面を作成
 - /resources/views/booksedit.blade.php を新規作成
 - 以下コードを貼り付ける
@@ -1191,8 +1195,10 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 ---
 
-## 【Laravel 11回目： Laravel 11回目： ページネーション】
+## 【Laravel 11回目： Laravel 11回目： ページネーション】(4:30)
 ### 9. Pagenation機能
+【やること】 
+-  1ページに全レコード表示すると見づらいので、1ページあたりに表示するレコード数を指定し、ページを分けることができる
 
 ##### (1)  コントローラ：indexメソッドの修正
 - BookController.phpの ***indexメソッド*** に以下コードを上書き
@@ -1211,9 +1217,10 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 
 ##### (2)  Viewにリンクを生成するコードを追加
+【やること】 
 - books.blade.php に 以下コードを追加します。
 - 右側エリアの一番下にページ送りを表示したいので右側エリアの最後の@endifのあとに追加
-- linksメソッドを使う
+- linksメソッドを使って簡単にできてしまいます！フレームワークには色々なものが用意されているのでやっぱり便利！そんでもってラク！
 
 ```
         <div>
@@ -1224,15 +1231,49 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 ---
 
-## 【Laravel 12回目： Auth：認証しないと見れない設定】(11:54)
-- ログアウトして　https://***.amazonaws.com/booksedit/2　と叩くと見えてしまう(最後の数字はbooksテーブルに存在しているレコードのID)
+## 【Laravel 12回目： Auth：認証しないと見れない設定】(12:00)
+【やること】 
+- ログアウトして　https://***.amazonaws.com/booksedit/2　と叩くと見えてしまう(最後の数字はbooksテーブルに存在しているレコードのIDにしてくださいね)
+- エラーは出るけれど‥‥ログインしていないのに見えてしまっている
 - この状態に対してログインしたユーザーにしか見せないようにす（PHPではセッションを使って実現していた部分）⇒Laravelはこの機能が準備してある
 - ->middleware(['auth']) を追加すれば簡単にできる
 
+##### (1)  routes/web.php を変更
+//本：更新画面　の　2行に　->middleware(['auth'])　を追加する
+
+
+
+【Tips】 ->middleware(['auth']) の設定方法がほかにも2つあります
+#--------------------------------------------
+#  方法１．コンストラクタを追加 [ログインしていない場合にLOGIN画面へ遷移]
+#   /app/Http/Controllers/BookController.php
+#   classに追加
+#--------------------------------------------
+#以下[END]までの全てのコードをコピー
+
+ public function __construct()
+ {
+      $this->middleware('auth');
+ }
+
+#[END]--------------------------------------------
+
+#--------------------------------------------
+#  方法２． Route::groupを使ったログイン認証(web.php の中でルーティングでくくっておくやり方）
+　　
+# * 注意）上記4の「コンストラクタ」か「Route::group」のどちらかだけの記述にします。
+#--------------------------------------------
+
+Route::group(['middleware' => 'auth'], function () {
+   //LOGIN認証後にしか見せたくないルーティングは中に入れる
+   //...
+});
+
+#[END]--------------------------------------------
+
+
 
 ---
-
-
 ## 【Laravel  13回目：自分が登録したデータのみ（表示・更新・削除）1ｘ1】(20:00)
 ### 10. ユーザーがログインしたらユーザーが登録した本のみ表示
 - １ユーザー ✕ １サービス
@@ -1241,25 +1282,47 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 ##### (1)  ユーザーidを登録できるようにbooksテーブルを変更
 - /database/migrations/[yyyy_mm_dd_hhiiss]_create_books_table.php に以下***１行を追加します***。
+- これによってレコードを登録したのが誰なのか特定できるようになります。
+
 ```
 $table->bigInteger('user_id'); //追加:user_id
 ```
+【確認】 booksテーブルの構造を見てみよう！
+- 構造の#2に　user_id　が型　bigint(20)　で追加されている
 
-##### (2)  テーブルを再構築する
+##### (2)＆(3＆  テーブルをリセット＆再構築する
 - テーブルをリセットして、再構築するコマンド
 ```
 php artisan migrate:refresh
 ```
 
-##### (3)  再構築されたbooksテーブルを確認 
+##### (4)  再構築されたbooksテーブルを確認 
 【確認】 テストデータが消えている
 -  refresh　はresetして再構築しているのでテストデータが消えている⇒booksデータもuserデータも消えているので再度登録すること
 
 
-phpMyAdmin
+phpMyAdmin　で確認してみよう
+
+もしくはターミナルでコマンドを打って確認することも可能
 ```
-http://localhost:8080/　　⇒なぜlocalhost:8080/　なのか不明・・・(間違い？)
+mysql -u root -p
 ```
+```
+root  #パスワード
+```
+```
+use c9;
+```
+```
+show tables;
+```
+```
+desc books;
+```
+```
+exit;
+```
+
 
 
 ##### (5)  コントローラ「BooksController@index」を修正
@@ -1271,17 +1334,21 @@ http://localhost:8080/　　⇒なぜlocalhost:8080/　なのか不明・・・(
 
 
 ##### (6)  コントローラ「BooksController@store」に追加
+- // Eloquentモデル　の　$books = new Book;　の下に以下の1行を追加します
+
 ```
 $books->user_id  = Auth::user()->id; //追加のコード
 ```
 
 ##### (7)  コントローラ「BooksController@update」を修正
+- //データ更新　の　 $books = Book::find($request->id);　を以下の1行に変更します
+
 ```
 $books = Book::where('user_id',Auth::user()->id)->find($request->id);
 ```
 
 ##### (8)  コントローラ「BooksController@edit」を修正
-- 修正範囲が多いのでeditメソッドを上書き
+- 修正範囲が多いのでeditメソッドを全消しして以下の内容で上書き
 ```
 public function edit($book_id)
 {
@@ -1289,7 +1356,14 @@ public function edit($book_id)
     return view('booksedit', ['book' => $books]);
 }
  ```
- 
+
+ ##### (9)  本当に自分が登録したデータのみCURDができるようになっているか確認
+- refreshコマンドでデータが消えているのでuserを2名登録し、それぞれで本を登録しましょう
+- 1人目のユーザーでログインして表示・更新・削除ができるのは自分がとうろくしたものだけになっているか確認しよう
+- 2人目のユーザーでログインして表示・更新・削除ができるのは自分がとうろくしたものだけになっているか確認しよう
+
+
+
  ---
  
  
