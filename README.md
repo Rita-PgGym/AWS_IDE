@@ -55,7 +55,9 @@
 
 ##### 1.01  AWS Academyにログイン
 URL==> 　    https://awsacademy.instructure.com/login/canvas
+
 Username==>　※メアド
+
 パスワード==> ※わすれないようにね
 
 ##### 1.02  AWS Academy Learner Labに入る
