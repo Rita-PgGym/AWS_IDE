@@ -1,5 +1,4 @@
-![image](https://github.com/Rita-PgGym/AWS_IDE/assets/159682878/85365cbb-2fe3-4680-8f0f-ef3664cfd083)![image](https://github.com/Rita-PgGym/AWS_IDE/assets/159682878/059d82b6-24c8-48ed-8764-da9d46af7bcd)# Laravel.10:CURD実装版
-#### 作成日：2024-05-01
+![image](https://github.com/Rita-PgGym/AWS_IDE/assets/159682878/810d277f-3bfe-4cac-80ab-ae4273038ad0)#### 作成日：2024-05-01
 #### 更新日：
 #### 環境：PHP8.2.15 Amazon Linux 2023 対象
 
@@ -138,8 +137,59 @@ node -v
 - nodeはTailwindCSSを使うときに必要です
 
 
+
 ---
 ## 【Laravel 2回目：DB＋phpMyAdminの設定】
+### ウォーミングアップ
+##### 資料
+https://github.com/yamazakidaisuke/GsCodeSample/blob/master/amazonLinux2023_laravel.md
+
+##### よく使うLinuxコマンド
+
+現在いる場所の。まわりのファイルやフォルダを表示
+```
+ls
+```
+
+隠しファイルも含めて表示。lsとハイフンのあいだには半角スペースあり。
+```
+ls -a
+```
+
+position working directory 今いる場所のパスを示してくれる
+```
+pwd
+```
+
+change directry   aaaに移動する
+```
+cd aaa
+```
+
+一つ上の階層に移動する
+```
+cd ..
+```
+
+過去に打ったコマンドを見ることができる　↑や↓で移動できる
+```
+↑（上向きやじるし）　↓（下向きやじるし)
+```
+
+よく使う
+```
+php artisan serve --port=8080
+```
+
+##### コンソール(コマンドを打つ黒いところ)が消えちゃったら…
+メニューバー｢View｣－[Console]をクリック
+
+##### コンソール(コマンドを打つ黒いところ)が消えちゃったら…
+コンソール(コマンドを打つ黒いところ)は複数起動できる⇒タブを増やせる
+　[＋]ボタンを押して[New Terminal]をクリック
+
+
+
 ### 2. MariaDB 再構築
 ##### MariaDBデフォルト確認
 ```
