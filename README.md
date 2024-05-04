@@ -297,7 +297,10 @@ BuiltInサーバーが立ち上がっているか確認する
 
 ##### サーバーを起動している間、コマンドが打てないじゃん…
 コンソール(コマンドを打つ黒いところ)は複数起動できる⇒タブを増やせる
+
 　[＋]ボタンを押して[New Terminal]をクリック
+
+ 階層は　environmentになっているのでcd　cms　でcmsフォルダに移動しよう
 
 ---
 
@@ -317,26 +320,41 @@ php artisan serve --port=8080
 
 
 ### ＜重要＞ AWS EC2環境では必須追記！！ → MAMP/XAMPPの場合は無視！
+【Tips】リンクをクリックしたらhttpsにリダイレクトされる
+
+AWS　cloud9の必須の設定(
+
 /app/Providers/ AppServiceProvider.php ファイルを修正
 ```
-use Illuminate\Support\Facades\URL;    //この行を追加
+use Illuminate\Support\Facades\URL;    //この行を4行目に追加
 public function boot() {
-   URL::forceScheme('https');          //この行を追加
+   URL::forceScheme('https');          //この行をpublic function boot()の中に追加
 }
 ```
 
 
-### データベース作成
+### データベース作成 
+【やることメモ】c9という名前のDBを作ってみる
 ```
 mysql -u root -p
+```
+```
 root [Enterキー]
+```
+```
 create database c9;
+```
+```
 exit;
 ```
 
 
 
 ##### .env（ファイル内の同じ箇所を上書き）
+【やることメモ】隠しファイル.envの11行目～16行目に以下を上書きする
+
+これをやっておかないとDBエラーが起きてしまうので必ずやろう！
+
 ``` 
 DB_CONNECTION=mysql
 DB_HOST=localhost
@@ -345,19 +363,28 @@ DB_DATABASE=c9
 DB_USERNAME=root
 DB_PASSWORD=root
 ```
-
+---
 
 ### phpMyAdmin設定
+【やることメモ】phpMyAdminをインストールしよう！
+
+cms/publicフォルダがhtdocsになるよ
+
+
 ```
 cd public
-
 wget https://files.phpmyadmin.net/phpMyAdmin/5.1.2/phpMyAdmin-5.1.2-all-languages.zip
-
 unzip phpMyAdmin-5.1.2-all-languages.zip
-
 cd ..
-
 ```
+---
+
+### サーバーを起動しよう
+↑　で過去のコマンドから探してもいいよ
+```
+php artisan serve --port=8080
+```
+
 
 ---
 
@@ -367,12 +394,18 @@ cd ..
 - 5.3「Preview」でサイトを開き、URLの最後に「phpMyAdmin/index.php」をつけてEnterキーを押す
 - 5.4 URL例： https://＊＊＊＊＊＊.cloud9.us-east-1.amazonaws.com/phpMyAdmin/
 - 5.5 phpMyAdmin画面が表示されたら： ユーザー名・パスワードともに「root」を入力してログイン
+- 5.55 先ほど作ったDB名でDBができていればOK
 - 5.6 ログインできればOK
 
+【Tips】phpMyAdmin
+- DB名はアプリーションに見合った名前にしよう！
+- DBの中にテーブルを作っていくが、phpMyAdminでは作りません。
+- 開発環境で作ります
+- phpMyAdminでは、データがちゃんと入っているか、データの型ができているかをチェックするために使う
 
 ---
 
-## 【Laravel 3回目：Bleeze/認証機能】
+## 【Laravel 3回目：Bleeze/認証機能】(14:00)
 ### 3. Auth( ユーザー登録・認証画面とテンプレート作成 )
 ―  Laravel0.x ~ 以降対応
 -  laravel/breeze のインストール
@@ -385,8 +418,9 @@ cd cms
 ```
 
 #### 1. Laravel 10.x の場合
+#sudo composer require laravel/breeze --dev　昔のコマンド
+今はこっち↓のコマンドを使います
 ```
-# sudo composer require laravel/breeze --dev
 composer require laravel/breeze:*
 ```
 
@@ -396,15 +430,19 @@ php artisan breeze:install
 ```
 
 #### 3.以下が表示されます
-「 Blade with Alpine 」をキーボードの↑↓で選択してEnter
+「 Blade with Alpine 」をキーボードの↑↓で選択して[Enter]
 
 #### 4.Dark Mode対応？
- Yes 選択してEnter
+ Yes 選択して[Enter]
 
 #### 5.テストライブラリの選択
-PHPUnit を選択してEnter
+PHPUnit を選択して[Enter]
 
 #### 6. HTML/CSS/JSをビルド（構築👉フロントで修正があるたびにビルド）
+Laravelはフロント側のHTML,CSS,JSは自動で更新されない
+
+このため必ずcmsフォルダで以下のコマンドを打って更新すること！
+
 ```
 npm run build
 ```
@@ -454,25 +492,29 @@ npm run build
 
 ---
 
-## 【Laravel 4回目：Laravel/マイグレーション】
+## 【Laravel 4回目：Laravel/マイグレーション】(23:00)
 ### 4. データ構造を作成（テーブル作成） 
-##### 1. booksテーブルを作成（マイグレーションファイル作成）
+【やることメモ】booksテーブルを作ってデータを登録しよう！
+
+##### 4.1 booksテーブルを作成（マイグレーションファイル作成）
 ```
 php artisan make:migration create_books_table --create=books
 ```
 【確認】databases/migrations/にyyyy_mm_dd_hhmmss_create_books_table.php　が作成されていることを確認しよう！
 
 【Tips】
+- コマンドの　php artisan　はおまじない、そのあとがコマンド
+- make:migration create_books_table --create=books　「create_books_table」という名前のマイグレーションファイルを作って、books　というテーブルを作ってください、というコマンドです
+- booksの部分を自分のアプリに見合う名前に変えよう！
 - トランザクションテーブル：データが積みあがっていく（増えていく）
 - マスターテーブル：データは固定 (例)都道府県テーブルなど
-
-
  
-  
 
-
-##### 2. [年]_[月]_[日]_[時分秒]_create_books_table.phpが作成されます
+##### 4.2  [年]_[月]_[日]_[時分秒]_create_books_table.phpが作成されます
 - /database/migrations/フォルダの中に生成されます
+- '$table->id();' と'$table->timestamps();'がすでにできている
+- オートインクリメントでプライマリーキーのカラムidを作ってくれる
+- timestampsによって登録日created_atと更新日update_at　のカラムも自動で作ってくれる。
 - 生成されたファイルを開き、public function up(){...}の中を追加修正
 ```
 public function up()
@@ -493,14 +535,14 @@ public function up()
 ```
 
 
-##### 3．マイグレーションを実行（テーブル作成）
+##### 4.3 マイグレーションを実行（テーブル作成）
 ```
 php artisan migrate
 ```
 
 
 
-##### 4．MySQL DBに作成されたテーブルを確認 (php+MyAdminの画面で)
+##### 4.4 MySQL DBに作成されたテーブルを確認 (php+MyAdminの画面で)
 【確認】phpMyAdminでc9の中のbooksテーブルの構造に追加した4行があることを確認しよう！
 
 phpMyAdmin URL例： 
@@ -508,7 +550,7 @@ phpMyAdmin URL例：
 https://＊＊＊＊＊＊.cloud9.us-east-1.amazonaws.com/phpMyAdmin/
 ```
 
-##### 5．ModelとControllerを一括作成
+##### 4.5 ModelとControllerを一括作成
 - ModelとはDB周りを簡単に扱えるようにする部分を書くファイル
 - Controllerとは処理の部分(if文とかfor文とか)を書くファイル
 ```
@@ -519,11 +561,27 @@ php artisan make:model Book -cr
 - テーブル名　終わりにsが付く　（例）users、books、items
 - モデル名　終わりのsをとって先頭文字を大文字にする　　（例）User、Book、Item
 
-##### 6．生成されたファイルを確認
+##### 4.6 生成されたファイルを確認
 【確認】生成されたファイルを確認しよう！次の2つのファイルが生成されます。
 
-- /app/models/Book.php が作成されます。これはMVCモデルのM(Model)です。
-- /app/Http/Controllers/BookController.php が生成されます＋空のメソッドも自動で生成されます。これはMVCモデルのC(Contorler)です。ここには処理を書くところです。
+- /app/models/Book.php が作成されます。
+  これはMVCモデルのM(Model)です。
+  
+- /app/Http/Controllers/BookController.php が生成されます＋空のメソッドも自動で生成されます。
+  これはMVCモデルのC(Contorler)です。ここには処理を書くところです。
+
+【Tips】テーブル名とモデル名
+- /reources/views　の下には表示するテンプレートを配置します
+- たとえば、reources/views/auth　の下には認証で表示するものが保管されている
+- /reources/views/componentsの下には用意されているパーツが保管されている
+- /reources/views/layouts/app.blade.php がマスタテンプレートになっていてとても重要。
+- 
+このファイルが、登録画面の右上のloginやregisterを読み込んで表示している部分を担っている
+
+app.blade.phpに、/reources/views/components　の部品を組み入れていくイメージ
+
+コンポーネント志向といいます
+  
 
 ###### [ 参考Documents ]
 
@@ -536,16 +594,16 @@ php artisan make:model Book -cr
 
 ---
 
-## 【Laravel 5回目：ルーティング】
+## 【Laravel 5回目：ルーティング】(13:00)
 ### 5. ルート定義（ルーティング）
 
-【Tips】ルーティング
+【Tips】ルーティングとは何か？
 - URLと「処理」or「画面」を紐づけすること
 - cms/routes/web.php　がルーティングしてくれる
 - ルーティングとはURLを叩いたら、どのファイルに紐づけること
 
 
-##### 1. /routes/web.php に 以下コードを貼り付けます。
+##### 5.1 /routes/web.php に 以下コードを貼り付けます。全部消してから貼り付ければOK！
 ```
 <?php
 use App\Http\Controllers\ProfileController;
@@ -596,18 +654,16 @@ require __DIR__.'/auth.php';
 
 【Tips】MVCモデルのV(View)＝画面表示の部分に入ります！ちょっと複雑になります…がんばろ！
 - Laravel9.1以降CSSフレームワークのBootstrapがデフォルトで選択できなくなった
-- コンポーネント化の知識が必須になった⇒覚えるしかないが、難しい話ではない！
+- コンポーネント化の標準化され、コンポーネント化の知識が必須になった⇒覚えるしかないが、難しい話ではない！
 - CSSはTailwind CSSがデフォルトになった⇒Tailwind CSSのCheet Sheetがあるので見てみよう！
-- コンポーネントは、includeで部品を読み込む、みたいにとらえると分かりやすいかも（まだわからんけど）
+- コンポーネントは、includeで部品を読み込む、みたいにとらえると分かりやすいかも（まだ分からんけどね）
 
 
 
-##### 1. /resources/views/components/collection.blade.php を作成
-【Tips】MVCモデルのV(View)に入ります！ちょっと複雑になります…がんばろ！
+##### (1)  /resources/views/components/collection.blade.php を作成
+【やること】
 -/resources/views/components/ にはよく使うものを部品としてを入れる⇒ここだけ直せばよい(メンテナンス性アップ)
 -表示用のファイルの拡張子は必ず　.blade.php　にする⇒この拡張子にしないと使えない
-
- 
 - /resources/views/components/　で新規ファイル作成⇒ファイル名はcollection.blade.php
 - 以下のコードを貼り付ける
 ```
@@ -618,7 +674,8 @@ require __DIR__.'/auth.php';
 ```
 
 
-##### 2. /resources/views/components/errors.blade.php を作成 
+##### (2)  /resources/views/components/errors.blade.php を作成 
+【やること】
 - /resources/views/components/　で新規ファイル作成⇒ファイル名は　errors.blade.php
 - 入力エラーのチェックの部品を作ろう！一つ部品を作ってそれを再利用していこう！
 - 以下のコードを貼り付ける
@@ -640,7 +697,8 @@ require __DIR__.'/auth.php';
 ```
 
 
-##### 3. /resources/views/books.blade.php を作成
+##### (3)  /resources/views/books.blade.php を作成
+【やること】
 - /resources/views/　で新規ファイル作成⇒ファイル名はbooks.blade.php
 - これは部品ではなくテンプレートを作るよ！
 - このファイルは　上で作った　collection.blade.php　や　errors.blade.php　を読み込んで使うテンプレート
@@ -736,7 +794,7 @@ require __DIR__.'/auth.php';
 ```
 
 
-##### 4. /resources/views/components/button.blade.php を作成
+##### (4)  /resources/views/components/button.blade.php を作成
 - 以下のコードを貼り付ける
 ```
 <button {{ $attributes->merge(['type' => 'submit', 'class' => 'inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150']) }}>
@@ -744,7 +802,8 @@ require __DIR__.'/auth.php';
 </button>
 ```
 
-##### 5. componentファイルとbladeファイルをBuild!!
+##### (5)  componentファイルとbladeファイルをBuild!!
+【やること】
 - bladeファイルとcomponentファイルを合体させます
 - JS/CSS(TailwindCSS)も同時にBuildされます
 - <重要>　フロント側の修正したら必ず実行してください⇒ブラウザで確認する前にこのコマンドを打つことを習慣にしよう！
@@ -759,18 +818,20 @@ npm run build
 
 ## 【Laravel 7回目：コントローラー①（登録処理）】(28:00)
 ### 7. Controller
-【Tips】Controllerは処理！
+【Tips】MVCモデルのC　Controllerは処理！
 - Controller　には、PHPやJSで書いていたif文、for文などでcodingしていた処理を書きます！
   
 
 
-##### 1. app/Http/Controllers/BookController.php を開く
+##### (1) app/Http/Controllers/BookController.php を開く
 - このControllerでValidatorを使えるようにする
 - このControllerでAuthを使えるようにする
-```
+
+このコマンドは昔のコマンドなので#つけてます（念のため消さないでとっておく）
 # use App\Models\Book;
 # use Illuminate\Http\Request;
-
+今はこっち↓のコマンドを使います
+```
 use Illuminate\Support\Facades\Validator; //この2行を追加！
 use Illuminate\Support\Facades\Auth;      //この2行を追加！
 ```
@@ -781,8 +842,12 @@ use Auth;       //この2行を追加！
 ```
 
 
-##### 2. /app/Http/Controllers/BookController.php を開く
+##### (2) /app/Http/Controllers/BookController.php を開く
 - [データ登録処理] public function store の中に以下を追加
+【Tips】public function storeについて…
+- 'store(Request $request)' この書き方はお作法なので丸暗記
+-  変数　$request　にPOST/GETのデータが入ってきます
+
 ```
 public function store(Request $request)
 {
@@ -818,23 +883,25 @@ public function store(Request $request)
    //** ↑ 上をコピー ↑ **
 }
 ```
-【Tips】バリデーション
-- Validator　部分は、基本コピペでOK！
-- 項目(name、number等）は自分が作りたいものに合わせて修正したり、追加したりすればOK
+【Tips】バリデーション部分
+- validator　部分は、基本コピペでOK！
+- '$request->all()'で すべてのデータ(name、emailとか)が飛んできて受け取っている
+-　項目''item_name' => 'required|min:3|max:255'' は、'item_name'が必須で文字数が3～255であることを示している
+- 項目(name、number等）は自分が作りたいデータに合わせて修正したり、追加したりすればOK
 
-【Tips】バリデーションエラー
+【Tips】バリデーションエラー部分
 - ここも、基本コピペでOK！
 - 戻す先　return redirect('/')　を自分の戻したいところに変えればOK！
 
 【Tips】 登録処理部分(Eloquentモデル)
--  $books = new Book;　テーブル名はbooks、モデルはBook、これはテーブルにアクセスするためのルール！
+-  '$books = new Book;'　テーブル名はbooks、モデルはBook、これはテーブルにアクセスするためのルール！
 -  飛んできたものをbooksテーブルのそれぞれの値に渡し、$books->save();　でテーブルに保存する
--  SQL文を打たなくていい、ということです
+-  SQL文を打たなくてテーブルにデータを登録できてしまう ということです
 
 ---
 
-## 【Laravel 8回目：コントローラー②（表示処理）】
-##### 3. /app/Http/Controllers/BookController.php を開く
+## 【Laravel 8回目：コントローラー②（表示処理）】(24：17)
+##### (3) /app/Http/Controllers/BookController.php を開く
 - [データ取得・表示処理] public function index() 内に以下を追加
 
 ```
@@ -851,12 +918,12 @@ public function index() {
 ```
 
 【Tips】 データの取得処理
--  Book::　でbooksテーブルにアクセスできる
--  orderBy('カラム名', '昇順・降順の指定')　でソート指定する
--  get()でデータを取得する
+-  'Book::'　でbooksテーブルにアクセスできる
+-  'orderBy('カラム名', '昇順・降順の指定')'でソート指定する
+-  'get()'でデータを取得する
 
 
-##### 4. /resources/views/books.blade.php を開く
+##### (4)  /resources/views/books.blade.php を開く
 - books.blade.php の ***「右側エリア」*** を全て上書き！！
 ```
     <!--右側エリア[START]-->
@@ -880,7 +947,7 @@ public function index() {
 ---
 
 ## 【Laravel 9回目： コントローラー③（削除処理）】
-##### 5. /resources/views/components/collection.blade.php を開く
+##### (5)  /resources/views/components/collection.blade.php を開く
 - collection.blade.php 内のcomponentを以下CODEに ***全て上書き！！*** 
 ```
 <!-- 本: 削除ボタン -->
@@ -918,7 +985,7 @@ public function index() {
 
 
 
-##### 6. /app/Http/Controllers/BookController.php を開く
+##### (6)  /app/Http/Controllers/BookController.php を開く
 - [データ削除処理] public function destroy に以下コードを追加
 ```
 public function destroy(Book $book)
@@ -950,7 +1017,7 @@ php artisan route:list -v
 
 ## 【Laravel 10回目： コントローラー④（更新処理）】(17:00)
 ### 8. 更新機能を作成 
-##### 1. [更新機能] view画面を作成
+##### (1) [更新機能] view画面を作成
 - /resources/views/booksedit.blade.php を新規作成
 - 以下コードを貼り付ける
 ```
@@ -1045,7 +1112,7 @@ php artisan route:list -v
 ```
 
 
-##### 2．[更新機能] コントローラー
+##### (2)  [更新機能] コントローラー
 - /app/Http/Controllers/BookController.phpを開く
 - 以下コードを ***edit*** に追加する
 ```   
@@ -1067,7 +1134,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 ```
 
 
-##### 3．[更新機能] 更新処理
+##### (3)  [更新機能] 更新処理
 - /app/Http/Controllers/BookController.php を開く
 - 以下コードを ***update*** メソッドに追加する
 ``` 
@@ -1113,7 +1180,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 ## 【Laravel 11回目： Laravel 11回目： ページネーション】
 ### 9. Pagenation機能
 
-##### 1. コントローラ：indexメソッドの修正
+##### (1)  コントローラ：indexメソッドの修正
 - BookController.phpの ***indexメソッド*** に以下コードを上書き
 - paginate(3); の箇所だけ変わります
 - paginate(表示件数); ()の中に何件表示するかを書く
@@ -1129,7 +1196,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 ```
 
 
-##### 2. Viewにリンクを生成するコードを追加
+##### (2)  Viewにリンクを生成するコードを追加
 - books.blade.php に 以下コードを追加します。
 - 右側エリアの一番下にページ送りを表示したいので右側エリアの最後の@endifのあとに追加
 - linksメソッドを使う
@@ -1158,19 +1225,19 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 - phpMyAdminではなく、migrationファイルから変更することが大事！
 
 
-##### 1. ユーザーidを登録できるようにbooksテーブルを変更
+##### (1)  ユーザーidを登録できるようにbooksテーブルを変更
 - /database/migrations/[yyyy_mm_dd_hhiiss]_create_books_table.php に以下***１行を追加します***。
 ```
 $table->bigInteger('user_id'); //追加:user_id
 ```
 
-##### 2. テーブルを再構築する
+##### (2)  テーブルを再構築する
 - テーブルをリセットして、再構築するコマンド
 ```
 php artisan migrate:refresh
 ```
 
-##### 3．再構築されたbooksテーブルを確認 
+##### (3)  再構築されたbooksテーブルを確認 
 【確認】 テストデータが消えている
 -  refresh　はresetして再構築しているのでテストデータが消えている⇒booksデータもuserデータも消えているので再度登録すること
 
@@ -1181,7 +1248,7 @@ http://localhost:8080/　　⇒なぜlocalhost:8080/　なのか不明・・・(
 ```
 
 
-##### 5. コントローラ「BooksController@index」を修正
+##### (5)  コントローラ「BooksController@index」を修正
 - 以下indexメソッドの「Book」モデルの条件を変えます
 - "where('user_id',Auth::user()->id)->"を追加して認証してる人のAuthIDを条件に追加しています
 ```
@@ -1189,17 +1256,17 @@ http://localhost:8080/　　⇒なぜlocalhost:8080/　なのか不明・・・(
 ```
 
 
-##### 6. コントローラ「BooksController@store」に追加
+##### (6)  コントローラ「BooksController@store」に追加
 ```
 $books->user_id  = Auth::user()->id; //追加のコード
 ```
 
-##### 7. コントローラ「BooksController@update」を修正
+##### (7)  コントローラ「BooksController@update」を修正
 ```
 $books = Book::where('user_id',Auth::user()->id)->find($request->id);
 ```
 
-##### 8. コントローラ「BooksController@edit」を修正
+##### (8)  コントローラ「BooksController@edit」を修正
 - 修正範囲が多いのでeditメソッドを上書き
 ```
 public function edit($book_id)
