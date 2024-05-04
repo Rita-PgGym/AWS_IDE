@@ -1304,6 +1304,7 @@ php artisan migrate:refresh
 phpMyAdmin　で確認してみよう
 
 もしくはターミナルでコマンドを打って確認することも可能
+
 ```
 mysql -u root -p
 ```
