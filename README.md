@@ -1270,11 +1270,13 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 
 【Tips】 ->middleware(['auth']) の設定方法がほかにも2つあります
-#####--------------------------------------------
-##### 方法１．コンストラクタを追加 [ログインしていない場合にLOGIN画面へ遷移]
-#####   /app/Http/Controllers/BookController.php
-#####   classに追加
-#####--------------------------------------------
+
+####--------------------------------------------
+#### 方法１．コンストラクタを追加 [ログインしていない場合にLOGIN画面へ遷移]
+####   /app/Http/Controllers/BookController.php
+####   classに追加
+####--------------------------------------------
+
 #以下[END]までの全てのコードをコピー
 
  public function __construct()
