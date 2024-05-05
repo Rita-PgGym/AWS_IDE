@@ -51,7 +51,9 @@ PHPと比べると自由度は下がる
 
 ##### MVCパターン
 Model：データを扱う、PDO、app/以下
+
 View：表示する、PHPにHTMLを書いてたところ、echoとか
+
 Controller；メイン処理（if文、for文などを使ったロジックの部分）、app.Http/Controllers/以下
 
 
