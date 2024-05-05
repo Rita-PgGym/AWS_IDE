@@ -287,7 +287,7 @@ sudo mv composer.phar /usr/bin/composer
 ```
 composer
 ```
-【確認】COMPOSERという文字がでっかく表示されていればOK！
+【確認】ターミナル画面を少し上にスクロールして　COMPOSERという文字がでっかく表示されていればOK！
 
 
 
