@@ -321,7 +321,7 @@ php artisan serve --port=8080
 ### ＜重要＞ AWS EC2環境では必須追記！！ → MAMP/XAMPPの場合は無視！
 【Tips】リンクをクリックしたらhttpsにリダイレクトされる
 
-AWS　cloud9の必須の設定(
+AWS　cloud9の必須の設定
 
 /app/Providers/ AppServiceProvider.php ファイルを修正
 ```
@@ -330,10 +330,10 @@ public function boot() {
    URL::forceScheme('https');          //この行をpublic function boot()の中に追加
 }
 ```
-
+【memo】ここまでがLarabelの設定でした！おつかれ！
 
 ### データベース作成 
-【やることメモ】c9という名前のDBを作ってみる
+【やることメモ】ここから、c9という名前のDBを作ります
 ```
 mysql -u root -p
 ```
@@ -365,7 +365,7 @@ DB_PASSWORD=root
 ---
 
 ### phpMyAdmin設定
-【やることメモ】phpMyAdminをインストールしよう！
+【やることメモ】phpMyAdminをインストールします！
 
 cms/publicフォルダがhtdocsになるよ
 
@@ -451,12 +451,9 @@ npm run build
 php artisan migrate
 ```
 
-【確認】ログイン機能・画面が作成されました、画面で確認！。
 
 
 ---
-
-
 #### 8．Login画面とRegister画面にリンクを追加( 2ファイル修正)
 
 - /resources/views/auth/register.blade.php
@@ -509,7 +506,7 @@ php artisan make:migration create_books_table --create=books
 - マスターテーブル：データは固定 (例)都道府県テーブルなど
  
 
-##### 4.2  [年]_[月]_[日]_[時分秒]_create_books_table.phpが作成されます
+##### 4.2  [年]__[月]__[日]_[時分秒]_create_books_table.phpが作成されます
 - /database/migrations/フォルダの中に生成されます
 - '$table->id();' と'$table->timestamps();'がすでにできている
 - オートインクリメントでプライマリーキーのカラムidを作ってくれる
@@ -794,6 +791,7 @@ require __DIR__.'/auth.php';
 
 
 ##### (4)  /resources/views/components/button.blade.php を作成
+- /resources/views/components/　で新規ファイル作成⇒ファイル名はbutton.blade.php
 - 以下のコードを貼り付ける
 ```
 <button {{ $attributes->merge(['type' => 'submit', 'class' => 'inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150']) }}>
