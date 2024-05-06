@@ -1000,7 +1000,7 @@ public function index() {
 
 </div>
 ```
-【Tips】1つ目の"<div>"タグ内は更新ボタン
+【Tips】1つ目の`<div>`タグ内は更新ボタン
 -  url('booksedit/'.$id)　では、文字　booksedit/　と　変数$idをドットでつなげて、booksedit/2　とか　booksedit/3　にしてどのidのデータを更新するか指定している
 -  関数url()は、　～.com　までを自動で取得し、そのあとにカッコ内の文字をくっつけてくれる
 
