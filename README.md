@@ -355,6 +355,8 @@ AWS　cloud9の必須の設定
 /app/Providers/ AppServiceProvider.php ファイルを修正
 ```
 use Illuminate\Support\Facades\URL;    //この行を4行目に追加
+```
+```
 public function boot() {
    URL::forceScheme('https');          //この行をpublic function boot()の中に追加
 }
