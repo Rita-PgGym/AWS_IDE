@@ -5,26 +5,31 @@
 ---
 ## 【Laravel 0回目： Laravel 0回目： PHPフレームワーク/Laravelとは？】(16:00)
 ### 0 開発環境構築
-####  0.1  フレームワークとは
+---
 
+####  0.1  フレームワークとは
 - フレームワークを使わないとゼロからプログラミングすることになる  
 - 一つのファイルに長く記述する人、モジュール化（関数化）する人、オブジェクト指向（クラス）を取り入れる人等々、個人差がでる  
 - いろいろな作り方ができるのは良いことでもあるが、複数名で開発するときはこの自由さが規則性のないコードを生産してしまうというデメリットがある  
 - チームで規則を決めてもPHPは書けば動いてしまうので規則が守られない可能性が残ってしまう  
 - これを防ぐには、そこで一定のルールを守ることがもとめられる「フレームワーク」が有効  
+---
 
 ####  0.2  フレームワークのメリット
 - 実装の負荷軽減   
 - フレームワークには、便利な枠組み、関数、クラスなど必要な処理が用意されているのでこの用意されているものを使うだけで実装できる   
 - 使い方（実装の仕方）を覚えればだれで作れる  
 - 保守性、セキュリティ、規則性のあるコード、可読性も確保できる  
-  
+---
+
 ####  0.3  フレームワークのデメリット
 - PHPと比べると自由度は下がる  
 - 関数、クラス、メソッド名など「フレーム」の規則=ルールに従わないと動いてくれない  
+---
 
 ####  0.4  なぜLaravelなのか
 - 人気があるフレームワークだから  
+---
 
 ####  0.5  Laravelの特徴
 - 学習コスト低い  
@@ -34,6 +39,7 @@
 - ページネーションが簡単に設置できる  
 - 本番環境へのアップロードが比較的ラク  
 【memo】最初からフレームワークを使うのではなく、PHPを学んでプログラミングを理解してからフレームワークを学び、使えるようになるのが良い  
+---
 
 ####  0.6  MVCパターン
 - Model：データを扱う、PDO、app/以下  
@@ -48,36 +54,43 @@
 ####  1.0  AWSを使う理由
 - ローカルの環境の差異に振り回されない
 - クレジットカードを登録することなく、AWSが使える（100ドル分のクレジット付き！）
+---
 
 ####  1.1  AWS Academyにログイン
 - URL==> 　    https://awsacademy.instructure.com/login/canvas  
 - Username==>　※メアド  
 - パスワード==> ※わすれないようにね  
+---
 
 ####  1.2  AWS Academy Learner Labに入る
 - ダッシュボードが表示されるので [AWS Academy Learner Lab] をクリック
+---
 
 ####  1.3  [モジュール]をクリック
-
+---
 
 ####  1.4  AWS Academy Learner Lab起動
 - [AWS Academy Learner Lab]の[AWS Academy Learner Lab を起動する]をクリック  
 - Vのくるくるが表示される  
 - 左上　[AWS●]　　●はあか==>　あかる停止していることを示している(課金されていません)  
+---
 
 ####  1.5  Labを開始する
 - 右上に表示される　[▶Start Lab]をクリックする  
 - Vのくるくるが表示される（少し時間がかかる）  
 - 左上　[AWS●]　　●がみどりになる==>　みどりまるは起動していることを示している(課金されています)  
 ※ここまでが、学生用のメニューの処理  
+---
 
 ####  1.6  コンソールのホーム画面を表示する
 - 左上　[AWS●]　●はみどり　をクリックする  
 ※別タブに通常の（商用の）コンソール画面が表示される  
+---
 
 ####  1.7  コンソールのホーム画面を表示して[Cloud9]サービスを利用する
 - 一番上に表示される(AWSロゴの右横)のサービスの検索窓に 「Cloud9」 と入力する  
 - または [最近アクセスしたサービス] に表示される [Cloud9] をクリックしてもよい  
+---
 
 #### 1.8  新規作成する
 - [環境を作成]をクリックして新しい環境を作成する  
@@ -92,26 +105,31 @@
 ※ここだけデフォルト値と違うので注意！  
 - [作成]ボタンクリック  
 ※青い帯が表示されるので緑の帯になるまで待つ（少し時間がかかる）  
+---
 
 ####  1.9  Cloud9 IDE(Integrated Development Environment統合開発環境)を設定する
 - 新しく作成した環境の[Cloud9 IDE]の[開く]をクリック  
 - 別タブに作成した開発環境の設定画面が表示される  
 - 上半分に表示される[Welcome]タブはタブの[×]で閉じてOK  
+---
 
 ####  1.10  隠しファイルを表示させる
 - 左のフレームの作成した環境名の横の歯車をクリック  
 - [Show Hidden Files]にチェックを付ける  
 - デフォルトはチェックが外れてる  
+---
 
 ####  1.11  右上の歯車をクリック
 - [Preference]タブが表示される  
 - 左のメニューから[Experimental]をクリック  
 - Auto-Save Filesのモードを[After Delay]にする(これで自動保存されるようになる）  
 - [Preference]タブはタブの[×]で閉じてOK  
+---
 
 ####  1.12  (途中まで作成して中断し再開した場合はターミナル開いていない)ターミナルを開く
 - 下のターミナル(コマンドを打つ黒いところ)のタブのプラスをクリック  
 - [New Terminal]を選択  
+---
 
 ####  1.13  ちょっとコマンドを打つ練習
 さっそくターミナルでコマンドを打ってみよう！  
@@ -186,7 +204,7 @@ php artisan serve --port=8080
 ```
 sudo yum list installed | grep mariadb
 ```
-
+---
 
 ####  2.2  Apache, MariaDBの起動
 ```
@@ -198,6 +216,7 @@ sudo mysql_secure_installation
 ```
 ※最初コマンドで聞かれたら「空」のPasswordでEnter、Yes/Noを聞かれたら基本「Y」、NewPasswordは「root」にする。
 
+---
 
 ####  2.3  MaridaDBの自動起動を有効化
 ```
@@ -209,6 +228,7 @@ sudo systemctl is-enabled mariadb
 ```
 【確認】コンソールに　enabled　と表示されていればOK　
 
+---
 
 ####  2.4  DB接続確認
 【確認】  
@@ -229,6 +249,7 @@ exit;
 ```
 【確認】コンソールに　Bye　と表示されていればOK  
 
+---
 
 ####  2.5  Composerインストール(3行一気にOK) 　【補足】1行ずつやる
 
@@ -245,6 +266,7 @@ composer
 ```
 【確認】ターミナル画面を少し上にスクロールして　COMPOSERという文字がでっかく表示されていればOK！
 
+---
 
 ####  2.6  Laravelインストール
 - バージョン指定する場合 → composer create-project "laravel/laravel=10.*" cms
@@ -253,13 +275,14 @@ composer
 ```
 composer create-project "laravel/laravel=10.*" cms 
 ```
+---
 
 ####  2.7  ディレクトリ移動(cmsはlaravelがフォルダ名です) ※2行一気にOK
 ```
 cd cms
 sudo composer update
 ```
-
+---
 
 ####  2.8  BuiltInサーバーを起動：動作確認
 - BuiltInサーバー(Apache Webサーバーみたいなもの）を起動しよう！  
@@ -268,9 +291,10 @@ sudo composer update
 php artisan serve --port=8080
 ```
 
+---
 
 ####  2.9  Webサーバー＆Laravel画面の確認
-BuiltInサーバーが立ち上がっているか確認する
+BuiltInサーバーが立ち上がっているか確認する  
 ①  [Preview]ボタン → [Preview Running Application]を選択  
 ②　Laravelの画面がコンソールの横に表示されるので別タブボタンを押して別タブで開こう！  
 ③　/resouces/views/welcome.blade.php を編集して確認しよう！　h1タグなどで文字列を表示してみよう  
@@ -315,7 +339,9 @@ public function boot() {
    URL::forceScheme('https');          //この行をpublic function boot()の中に追加
 }
 ```
-【memo】ここまでがLarabelの設定でした！おつかれ！
+【memo】ここまでが Laravel の設定でした！お疲れさまでした！
+
+---
 
 ####  2.10  データベース作成 
 【やることメモ】ここから、c9という名前のDBを作ります
@@ -331,8 +357,7 @@ create database c9;
 ```
 exit;
 ```
-
-
+---
 
 ####  2.11  .env（ファイル内の同じ箇所を上書き）
 【やることメモ】隠しファイル.envの11行目～16行目に以下を上書きする
@@ -364,6 +389,7 @@ cd ..
 ---
 
 ####  2.13  サーバーを起動しよう
+ここまでにサーバーを落としていたら津市の作業のためにサーバーを起動しておきましょう  
 ↑　で過去のコマンドから探してもいいよ
 ```
 php artisan serve --port=8080
@@ -373,13 +399,13 @@ php artisan serve --port=8080
 ---
 
 #### ＜phpMyAdmin確認手順＞
-- 5.1 publicフォルダ内に「phpMyAdmin-*.*.*-all-languages」フォルダが作成される 
-- 5.2 フォルダ名が長いので「phpMyAdmin」に変更
-- 5.3「Preview」でサイトを開き、URLの最後に「phpMyAdmin/index.php」をつけてEnterキーを押す
-- 5.4 URL例： https://＊＊＊＊＊＊.cloud9.us-east-1.amazonaws.com/phpMyAdmin/
-- 5.5 phpMyAdmin画面が表示されたら： ユーザー名・パスワードともに「root」を入力してログイン
-- 5.6 ログインできればOK
-- 5.65 先ほど作ったDB名でDBができていればOK
+①　publicフォルダ内に「phpMyAdmin-*.*.*-all-languages」フォルダが作成される  
+②　フォルダ名が長いので「phpMyAdmin」に変更  
+③　「Preview」でサイトを開き、URLの最後に「phpMyAdmin/index.php」をつけてEnterキーを押す  
+④　URL例： https://＊＊＊＊＊＊.cloud9.us-east-1.amazonaws.com/phpMyAdmin/  
+⑤　phpMyAdmin画面が表示されたら： ユーザー名・パスワードともに「root」を入力してログイン  
+⑥　ログインできればOK  
+⑦　先ほど作ったDB名でDBができていればOK  
 
 【Tips】phpMyAdmin
 - DB名はアプリーションに見合った名前にしよう！
@@ -401,6 +427,7 @@ php artisan serve --port=8080
 ```
 cd cms
 ```
+---
 
 ####  3.1  Laravel 10.x の場合
 #sudo composer require laravel/breeze --dev　昔のコマンド
@@ -408,38 +435,39 @@ cd cms
 ```
 composer require laravel/breeze:*
 ```
+---
 
 ####  3.2   artisan コマンドを実行
 ```
 php artisan breeze:install
 ```
+---
 
 ####  3.3  以下が表示されます
-「 Blade with Alpine 」をキーボードの↑↓で選択して[Enter]
+「 Blade with Alpine 」をキーボードの↑↓で選択して[Enter]  
 
 ####  3.4  Dark Mode対応？
- Yes 選択して[Enter]
+ Yes 選択して[Enter]  
 
 ####  3.5  テストライブラリの選択
-PHPUnit を選択して[Enter]
+PHPUnit を選択して[Enter]  
 
 ####  3.6  HTML/CSS/JSをビルド（構築👉フロントで修正があるたびにビルド）
-Laravelはフロント側のHTML,CSS,JSは自動で更新されない
+Laravelはフロント側のHTML,CSS,JSは自動で更新されない  
 
-このため必ずcmsフォルダで以下のコマンドを打って更新すること！
+このため必ずcmsフォルダで以下のコマンドを打って更新すること！  
 
 ```
 npm run build
 ```
+---
 
 ####  3.7  テーブル作成
 ```
 php artisan migrate
 ```
-
-
-
 ---
+
 ####  3.8  Login画面とRegister画面にリンクを追加( 2ファイル修正)
 
 - /resources/views/auth/register.blade.php
@@ -486,12 +514,12 @@ php artisan make:migration create_books_table --create=books
 【確認】databases/migrations/にyyyy_mm_dd_hhmmss_create_books_table.php　が作成されていることを確認しよう！
 
 【Tips】
-- コマンドの　php artisan　はおまじない、そのあとがコマンド
-- make:migration create_books_table --create=books　「create_books_table」という名前のマイグレーションファイルを作って、books　というテーブルを作ってください、というコマンドです
-- booksの部分を自分のアプリに見合う名前に変えよう！
-- トランザクションテーブル：データが積みあがっていく（増えていく）
-- マスターテーブル：データは固定 (例)都道府県テーブルなど
- 
+- コマンドの　php artisan　はおまじない、そのあとがコマンド  
+- make:migration create_books_table --create=books　「create_books_table」という名前のマイグレーションファイルを作って、books　というテーブルを作ってください、というコマンドです  
+- booksの部分を自分のアプリに見合う名前に変えよう！  
+- トランザクションテーブル：データが積みあがっていく（増えていく）  
+- マスターテーブル：データは固定 (例)都道府県テーブルなど  
+---
 
 ####  4.2  [年]__[月]__[日]_[時分秒]_create_books_table.phpが作成されます
 - /database/migrations/フォルダの中に生成されます
@@ -516,14 +544,13 @@ public function up()
         });
 }
 ```
-
+---
 
 ####  4.3  マイグレーションを実行（テーブル作成）
 ```
 php artisan migrate
 ```
-
-
+---
 
 ####  4.4  MySQL DBに作成されたテーブルを確認 (php+MyAdminの画面で)
 【確認】phpMyAdminでc9の中のbooksテーブルの構造に追加した4行があることを確認しよう！
@@ -532,6 +559,7 @@ phpMyAdmin URL例：
 ```
 https://＊＊＊＊＊＊.cloud9.us-east-1.amazonaws.com/phpMyAdmin/
 ```
+---
 
 ####  4.5  ModelとControllerを一括作成
 - ModelとはDB周りを簡単に扱えるようにする部分を書くファイル
@@ -543,16 +571,13 @@ php artisan make:model Book -cr
 【Tips】テーブル名とモデル名
 - テーブル名　終わりにsが付く　（例）users、books、items
 - モデル名　終わりのsをとって先頭文字を大文字にする　　（例）User、Book、Item
-- 上記のコマンドで2つのファイルが生成される
-- 
-　　/app/models/Book.php
-  
-　　/app/Http/Controllers/BookController.php
+- 上記のコマンドで2つのファイルが生成される  
+　　/app/models/Book.php  
+　　/app/Http/Controllers/BookController.php  
   
 - make:model の後のオプション
-  
-　-cr　CRUDを兼ね備えたcontrollerを作る
- 
+    cr　CRUDを兼ね備えたcontrollerを作る
+---
 
 ####  4.6  生成されたファイルを確認
 【確認】生成されたファイルを確認しよう！次の2つのファイルが生成されます。
@@ -567,12 +592,10 @@ php artisan make:model Book -cr
 - /reources/views　の下には表示するテンプレートを配置します
 - たとえば、reources/views/auth　の下には認証で表示するものが保管されている
 - /reources/views/componentsの下には用意されているパーツが保管されている
-- /reources/views/layouts/app.blade.php がマスタテンプレートになっていてとても重要。
-- 
-このファイルが、登録画面の右上のloginやregisterを読み込んで表示している部分を担っている
+- /reources/views/layouts/app.blade.php がマスタテンプレートになっていてとても重要。  
 
-app.blade.phpに、/reources/views/components　の部品を組み入れていくイメージ
-
+このファイルが、登録画面の右上のloginやregisterを読み込んで表示している部分を担っている  
+app.blade.phpに、/reources/views/components　の部品を組み入れていくイメージ  
 コンポーネント志向といいます
   
 
@@ -594,7 +617,7 @@ app.blade.phpに、/reources/views/components　の部品を組み入れてい�
 - URLと「処理」or「画面」を紐づけすること
 - cms/routes/web.php　がルーティングしてくれる
 - ルーティングとはURLを叩いたら、どのファイルに紐づけること
-
+---
 
 ####  5.1  /routes/web.php に 以下コードを貼り付けます。全部消してから貼り付ければOK！
 ```
@@ -643,15 +666,13 @@ require __DIR__.'/auth.php';
 ---
 
 ## 【Laravel 6回目：View・コンポーネント】12:45
-### 6. View
+### 6. View = 表示
 
 【Tips】MVCモデルのV(View)＝画面表示の部分に入ります！ちょっと複雑になります…がんばろ！
 - Laravel9.1以降CSSフレームワークのBootstrapがデフォルトで選択できなくなった
 - コンポーネント化の標準化され、コンポーネント化の知識が必須になった⇒覚えるしかないが、難しい話ではない！
 - CSSはTailwind CSSがデフォルトになった⇒Tailwind CSSのCheet Sheetがあるので見てみよう！
 - コンポーネントは、includeで部品を読み込む、みたいにとらえると分かりやすいかも（まだ分からんけどね）
-
-
 
 ####  6.1  /resources/views/components/collection.blade.php を作成
 【やること】
@@ -665,7 +686,7 @@ require __DIR__.'/auth.php';
   <button>×</button>
 </div>
 ```
-
+---
 
 ####  6.2  /resources/views/components/errors.blade.php を作成 
 【やること】
@@ -688,7 +709,7 @@ require __DIR__.'/auth.php';
     </div>
 @endif
 ```
-
+---
 
 ####  6.3  /resources/views/books.blade.php を作成
 【やること】
@@ -785,7 +806,7 @@ require __DIR__.'/auth.php';
 
 </x-app-layout>
 ```
-
+---
 
 ####  6.4  /resources/views/components/button.blade.php を作成
 - /resources/views/components/　で新規ファイル作成⇒ファイル名はbutton.blade.php
@@ -795,6 +816,7 @@ require __DIR__.'/auth.php';
     {{ $slot }}
 </button>
 ```
+---
 
 ####  6.5  componentファイルとbladeファイルをBuild!!
 【やること】
@@ -814,9 +836,7 @@ npm run build
 ## 【Laravel 7回目：コントローラー①（登録処理）】(28:00)
 ### 7. Controller
 【Tips】MVCモデルのC　Controllerは処理！
-- Controller　には、PHPやJSで書いていたif文、for文などでcodingしていた処理を書きます！
-
-
+- Controller　には、PHPやJSで書いていたif文、for文などでcodingしていた処理を書きます！  
 ####  7.1  app/Http/Controllers/BookController.php を開く
 - このControllerでValidatorを使えるようにする
 - このControllerでAuthを使えるようにする
@@ -837,7 +857,7 @@ use Illuminate\Support\Facades\Auth;      //この2行を追加！
 use Validator;  //この2行を追加！
 use Auth;       //この2行を追加！
 ```
-
+---
 
 ####  7.2  /app/Http/Controllers/BookController.php を開く
 - [データ登録処理] public function store の中に以下を追加
@@ -920,7 +940,7 @@ public function index() {
 -  orderBy('カラム名', '昇順・降順の指定') でソート指定する
 -  get() でデータを取得する
 -  orderByメソッドとgetメソッドでデータを　アロー　->　でつなぐことによって組み合わせて実施している
-
+---
 
 ####  8.2  /resources/views/books.blade.php を開く
 - books.blade.php の ***「右側エリア」*** を全て上書き！！
@@ -1002,8 +1022,7 @@ public function index() {
 
 
 -  @csrf　を書いたので、サーバー側で処理されてその結果がにブラウザに送付されてきている
-
-
+---
 
 ####  9.2  /app/Http/Controllers/BookController.php を開く
 - [データ削除処理] public function destroy に以下コードを追加
@@ -1132,7 +1151,7 @@ php artisan route:list -v
 
 </x-app-layout>
 ```
-
+---
 
 ####  10.2   [更新機能] コントローラー
 - /app/Http/Controllers/BookController.phpを開く
@@ -1154,7 +1173,7 @@ php artisan route:list -v
 Route::post('/booksedit/{book}',[BookController::class,"edit"])->name('book_edit'); //通常
 Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');      //Validationエラーありの場合
 ```
-
+---
 
 ####  10.3  [更新機能] 更新処理
 - /app/Http/Controllers/BookController.php を開く
@@ -1219,7 +1238,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
         ]);
     }
 ```
-
+---
 
 ####  11.2  Viewにリンクを生成するコードを追加
 【やること】 
@@ -1243,7 +1262,6 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 - エラーは出るけれど‥‥ログインしていないのに見えてしまっている
 - この状態に対してログインしたユーザーにしか見せないようにす（PHPではセッションを使って実現していた部分）⇒Laravelはこの機能が準備してある
 - ->middleware(['auth']) を追加すれば簡単にできる
-
 ####  12.1  routes/web.php を変更
 //本：更新画面　の　2行に　->middleware(['auth'])　を追加する
 
@@ -1295,6 +1313,7 @@ Route::group(['middleware' => 'auth'], function () {
 ```
 $table->bigInteger('user_id'); //追加:user_id
 ```
+---
 
 ####  13.2 + 13.3  テーブルをリセット＆再構築する
 - テーブルをリセットして、再構築するコマンド
@@ -1304,6 +1323,7 @@ php artisan migrate:refresh
 【確認】 booksテーブルの構造を見てみよう！
 - 構造の#2に　user_id　が型　bigint(20)　で追加されている
 
+---
 
 ####  13.4  再構築されたbooksテーブルを確認 
 【確認】 テストデータが消えている
@@ -1332,8 +1352,7 @@ desc books;
 ```
 exit;
 ```
-
-
+---
 
 ####  13.5  コントローラ「BooksController@index」を修正
 - 以下indexメソッドの「Book」モデルの条件を変えます
@@ -1342,7 +1361,7 @@ exit;
 ```
  $books = Book::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
 ```
-
+---
 
 ####  13.6  コントローラ「BooksController@store」に追加
 - // Eloquentモデル　の　$books = new Book;　の下に　以下の1行を追加します
@@ -1350,6 +1369,7 @@ exit;
 ```
 $books->user_id  = Auth::user()->id; //追加のコード
 ```
+---
 
 ####  13.7  コントローラ「BooksController@update」を修正
 - //データ更新　の　 $books = Book::find($request->id);　を以下の1行に変更します
@@ -1357,6 +1377,7 @@ $books->user_id  = Auth::user()->id; //追加のコード
 ```
 $books = Book::where('user_id',Auth::user()->id)->find($request->id);
 ```
+---
 
 ####  13.8  コントローラ「BooksController@edit」を修正
 - 修正範囲が多いのでeditメソッドを全消しして以下の内容で上書き
@@ -1367,6 +1388,7 @@ public function edit($book_id)
     return view('booksedit', ['book' => $books]);
 }
  ```
+---
 
  #####  13.9  本当に自分が登録したデータのみCURDができるようになっているか確認
 - refreshコマンドでデータが消えているのでuserを2名登録し、それぞれで本を登録しましょう
