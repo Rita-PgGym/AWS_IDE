@@ -867,7 +867,9 @@ npm run build
 - このControllerでAuthを使えるようにする
 
 このコマンドは昔のコマンドなので#つけてます（念のため消さないでとっておく）
+
 #use App\Models\Book;　昔のコマンド
+
 #use Illuminate\Http\Request;
 
 今はこっち↓のコマンドを使います
