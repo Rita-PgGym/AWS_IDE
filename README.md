@@ -424,8 +424,8 @@ php artisan serve --port=8080
 - 5.3「Preview」でサイトを開き、URLの最後に「phpMyAdmin/index.php」をつけてEnterキーを押す
 - 5.4 URL例： https://＊＊＊＊＊＊.cloud9.us-east-1.amazonaws.com/phpMyAdmin/
 - 5.5 phpMyAdmin画面が表示されたら： ユーザー名・パスワードともに「root」を入力してログイン
-- 5.55 先ほど作ったDB名でDBができていればOK
 - 5.6 ログインできればOK
+- 5.65 先ほど作ったDB名でDBができていればOK
 
 【Tips】phpMyAdmin
 - DB名はアプリーションに見合った名前にしよう！
