@@ -318,9 +318,10 @@ php artisan serve --port=8080
 ### Webサーバー＆Laravel画面の確認
 BuiltInサーバーが立ち上がっているか確認する
 - 4.1  [Preview]ボタン → [Preview Running Application]を選択
-- 　別タブで開こう！
-- 4.2  /resouces/views/welcome.blade.php を編集して確認しよう！
+- 4.1.5  Laravelの画面がコンソールの横に表示されるので別タブボタンを押して別タブで開こう！
+- 4.2  /resouces/views/welcome.blade.php を編集して確認しよう！　h1タグなどで文字列を表示してみよう
 - 4.3  ブラウザ・更新で確認 →　変更確認できればOK
+- 4.4  4.2で変更したところは戻しておくこと
 
 ##### サーバーを起動している間、コマンドが打てないじゃん…
 コンソール(コマンドを打つ黒いところ)は複数起動できる⇒タブを増やせる
