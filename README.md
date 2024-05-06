@@ -180,7 +180,7 @@ php artisan serve --port=8080
 　[＋]ボタンを押して[New Terminal]をクリック
 
 
-
+### ここから本番です！
 ### 2. MariaDB 再構築
 ####  2.1  MariaDBデフォルト確認
 ```
@@ -205,14 +205,11 @@ sudo systemctl enable mariadb
 ```
 sudo systemctl is-enabled mariadb
 ```
-【確認】コンソールに　enabled　と表示されていればOK
-
 ####  2.4  DB接続確認
-★DBが動いているか、ログインして確認しよう！
-★ログインしたら出てこないを新しいコマンドを打てなくなるので最後にexitで抜けよう
-★exitの後にはセミコロン;忘れないでね！
-
-
+【確認】  
+-  DBが動いているか、ログインして確認しよう！  
+-  ログインしたら出てこないを新しいコマンドを打てなくなるので最後にexitで抜けよう  
+-  exitの後にはセミコロン;忘れないでね！  
 
 ```
 mysql -u root -p
@@ -225,7 +222,7 @@ root
 ```
 exit;
 ```
-
+【確認】コンソールに　enabled　と表示されていればOK　　
 
 ---
 
