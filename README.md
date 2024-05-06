@@ -834,25 +834,25 @@ npm run build
 
 ---
 ## 【Laravel 7回目：コントローラー①（登録処理）】(28:00)
-### 7. Controller
+### 7. Controller = 処理
 【Tips】MVCモデルのC　Controllerは処理！
 - Controller　には、PHPやJSで書いていたif文、for文などでcodingしていた処理を書きます！  
 ####  7.1  app/Http/Controllers/BookController.php を開く
-- このControllerでValidatorを使えるようにする
-- このControllerでAuthを使えるようにする
+【やること】  
+- BookControllerでValidatorを使えるようにする
+- BookControllerでAuthを使えるようにする  
 
-このコマンドは昔のコマンドなので#つけてます（念のため消さないでとっておく）
+このコマンドは昔のコマンドなので#つけてます（念のため消さないでとっておく）  
+#use App\Models\Book;　昔のコマンド  
+#use Illuminate\Http\Request;  
 
-#use App\Models\Book;　昔のコマンド
-
-#use Illuminate\Http\Request;
 
 今はこっち↓のコマンドを使います
 ```
 use Illuminate\Support\Facades\Validator; //この2行を追加！
 use Illuminate\Support\Facades\Auth;      //この2行を追加！
 ```
-上記 または 以下どちらか
+上記 または 以下どちらかを　BookController.php　の7行目にコピーします
 ```
 use Validator;  //この2行を追加！
 use Auth;       //この2行を追加！
@@ -860,10 +860,10 @@ use Auth;       //この2行を追加！
 ---
 
 ####  7.2  /app/Http/Controllers/BookController.php を開く
-- [データ登録処理] public function store の中に以下を追加
-【Tips】public function storeについて…
--　store(Request $request) この書き方はお作法なので丸暗記
--　変数　$request　にPOST/GETのデータが入ってきます
+- [データ登録処理] public function store の中に以下を追加  
+【Tips】public function storeについて…  
+- store(Request $request) この書き方はお作法なので丸暗記  
+- 変数　$request　にPOST/GETのデータが入ってきます  
 
 ```
 public function store(Request $request)
@@ -903,7 +903,7 @@ public function store(Request $request)
 【Tips】バリデーション部分
 - validator　部分は、基本コピペでOK！
 - $request->all() で すべてのデータ(name、emailとか)が飛んできて受け取っている
--　項目'item_name' => 'required|min:3|max:255' は、'item_name'が必須で文字数が3～255であることを示している
+- 項目'item_name' => 'required|min:3|max:255' は、'item_name'が必須で文字数が3～255であることを示している
 - 項目(name、number等）は自分が作りたいデータに合わせて修正したり、追加したりすればOK
 
 【Tips】バリデーションエラー部分
@@ -1000,7 +1000,7 @@ public function index() {
 
 </div>
 ```
-【Tips】1つ目の<div>タグ内は更新ボタン
+【Tips】1つ目の"<div>"タグ内は更新ボタン
 -  url('booksedit/'.$id)　では、文字　booksedit/　と　変数$idをドットでつなげて、booksedit/2　とか　booksedit/3　にしてどのidのデータを更新するか指定している
 -  関数url()は、　～.com　までを自動で取得し、そのあとにカッコ内の文字をくっつけてくれる
 
