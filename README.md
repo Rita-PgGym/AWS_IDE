@@ -859,7 +859,6 @@ npm run build
 ### 7. Controller
 【Tips】MVCモデルのC　Controllerは処理！
 - Controller　には、PHPやJSで書いていたif文、for文などでcodingしていた処理を書きます！
-  
 
 
 ##### (1) app/Http/Controllers/BookController.php を開く
@@ -1325,19 +1324,21 @@ Route::group(['middleware' => 'auth'], function () {
 
 ##### (1)  ユーザーidを登録できるようにbooksテーブルを変更
 - /database/migrations/[yyyy_mm_dd_hhiiss]_create_books_table.php に以下***１行を追加します***。
+- $table->id();　の行と　$table->string('item_name');　の行の間に追加しましょう！
 - これによってレコードを登録したのが誰なのか特定できるようになります。
 
 ```
 $table->bigInteger('user_id'); //追加:user_id
 ```
-【確認】 booksテーブルの構造を見てみよう！
-- 構造の#2に　user_id　が型　bigint(20)　で追加されている
 
-##### (2)＆(3＆  テーブルをリセット＆再構築する
+##### (2)＆(3)  テーブルをリセット＆再構築する
 - テーブルをリセットして、再構築するコマンド
 ```
 php artisan migrate:refresh
 ```
+【確認】 booksテーブルの構造を見てみよう！
+- 構造の#2に　user_id　が型　bigint(20)　で追加されている
+
 
 ##### (4)  再構築されたbooksテーブルを確認 
 【確認】 テストデータが消えている
@@ -1371,14 +1372,15 @@ exit;
 
 ##### (5)  コントローラ「BooksController@index」を修正
 - 以下indexメソッドの「Book」モデルの条件を変えます
-- "where('user_id',Auth::user()->id)->"を追加して認証してる人のAuthIDを条件に追加しています
+- 1行丸ごと変更します
+- "where('user_id',Auth::user()->id)->"　を追加して、認証してる人のAuthIDを条件に追加しています
 ```
  $books = Book::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
 ```
 
 
 ##### (6)  コントローラ「BooksController@store」に追加
-- // Eloquentモデル　の　$books = new Book;　の下に以下の1行を追加します
+- // Eloquentモデル　の　$books = new Book;　の下に　以下の1行を追加します
 
 ```
 $books->user_id  = Auth::user()->id; //追加のコード
