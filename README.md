@@ -216,22 +216,22 @@ cd ..
 php artisan serve --port=8080
 ```
 
-##### コンソール(コマンドを打つ黒いところ)が消えちゃったら…
+#### コンソール(コマンドを打つ黒いところ)が消えちゃったら…
 メニューバー｢View｣－[Console]をクリック
 
-##### サーバーを起動している間、コマンドが打てないじゃん…
+#### サーバーを起動している間、コマンドが打てないじゃん…
 コンソール(コマンドを打つ黒いところ)は複数起動できる⇒タブを増やせる
 　[＋]ボタンを押して[New Terminal]をクリック
 
 
 
 ### 2. MariaDB 再構築
-##### MariaDBデフォルト確認
+#### MariaDBデフォルト確認
 ```
 sudo yum list installed | grep mariadb
 ```
 
-##### Apache, MariaDBの起動
+#### Apache, MariaDBの起動
 ```
 sudo systemctl start mariadb
 ```
@@ -241,7 +241,7 @@ sudo mysql_secure_installation
 ```
 ※最初コマンドで聞かれたら「空」のPasswordでEnter、Yes/Noを聞かれたら基本「Y」、NewPasswordは「root」にする。
 
-##### MaridaDBの自動起動を有効化
+#### MaridaDBの自動起動を有効化
 ```
 sudo systemctl enable mariadb
 ```
@@ -251,7 +251,7 @@ sudo systemctl is-enabled mariadb
 ```
 【確認】コンソールに　enabled　と表示されていればOK
 
-##### DB接続確認
+#### DB接続確認
 ★DBが動いているか、ログインして確認しよう！
 ★ログインしたら出てこないを新しいコマンドを打てなくなるので最後にexitで抜けよう
 ★exitの後にはセミコロン;忘れないでね！
@@ -274,7 +274,7 @@ exit;
 ---
 
 
-### Composerインストール(3行一気にOK) 　【補足】1行ずつやる
+#### Composerインストール(3行一気にOK) 　【補足】1行ずつやる
 
 ```
 curl -sS https://getcomposer.org/installer | php
@@ -291,7 +291,7 @@ composer
 
 
 
-### Laravelインストール
+#### Laravelインストール
 - バージョン指定する場合 → composer create-project "laravel/laravel=10.*" cms
 - バージョン指定ない場合 → composer create-project laravel/laravel cms
 - Laravel0.x 最新を指定 → composer create-project --prefer-dist laravel/laravel cms dev-master
@@ -299,14 +299,14 @@ composer
 composer create-project "laravel/laravel=10.*" cms 
 ```
 
-### ディレクトリ移動(cmsはlaravelがフォルダ名です) ※2行一気にOK
+#### ディレクトリ移動(cmsはlaravelがフォルダ名です) ※2行一気にOK
 ```
 cd cms
 sudo composer update
 ```
 
 
-### BuiltInサーバーを起動：動作確認
+#### BuiltInサーバーを起動：動作確認
 BuiltInサーバー(Apache Webサーバーみたいなもの）を起動しよう！
 cmsフォルダで実行すること
 ```
@@ -314,7 +314,7 @@ php artisan serve --port=8080
 ```
 
 
-### Webサーバー＆Laravel画面の確認
+#### Webサーバー＆Laravel画面の確認
 BuiltInサーバーが立ち上がっているか確認する
 - 4.1  [Preview]ボタン → [Preview Running Application]を選択
 - 4.1.5  Laravelの画面がコンソールの横に表示されるので別タブボタンを押して別タブで開こう！
@@ -322,7 +322,7 @@ BuiltInサーバーが立ち上がっているか確認する
 - 4.3  ブラウザ・更新で確認 →　変更確認できればOK
 - 4.4  4.2で変更したところは戻しておくこと
 
-##### サーバーを起動している間、コマンドが打てないじゃん…
+#### サーバーを起動している間、コマンドが打てないじゃん…
 コンソール(コマンドを打つ黒いところ)は複数起動できる⇒タブを増やせる
 
 　[＋]ボタンを押して[New Terminal]をクリック
@@ -332,12 +332,12 @@ BuiltInサーバーが立ち上がっているか確認する
 ---
 
 
-### <<重要ポイント>> [.env]ファイルを更新したら必ずWebサーバーを再起動！！
+#### <<重要ポイント>> [.env]ファイルを更新したら必ずWebサーバーを再起動！！
 
-##### Webサーバー止める
+#### Webサーバー止める
  [ Ctl + C ]キー でWebサーバーを止める
 
-##### Webサーバー起動（.envの再読み込み！）
+#### Webサーバー起動（.envの再読み込み！）
 ```
 php artisan serve --port=8080
 ```
@@ -346,7 +346,7 @@ php artisan serve --port=8080
 
 
 
-### ＜重要＞ AWS EC2環境では必須追記！！ → MAMP/XAMPPの場合は無視！
+#### ＜重要＞ AWS EC2環境では必須追記！！ → MAMP/XAMPPの場合は無視！
 【Tips】リンクをクリックしたらhttpsにリダイレクトされる
 
 AWS　cloud9の必須の設定
@@ -362,7 +362,7 @@ public function boot() {
 ```
 【memo】ここまでがLarabelの設定でした！おつかれ！
 
-### データベース作成 
+#### データベース作成 
 【やることメモ】ここから、c9という名前のDBを作ります
 ```
 mysql -u root -p
@@ -379,7 +379,7 @@ exit;
 
 
 
-##### .env（ファイル内の同じ箇所を上書き）
+#### .env（ファイル内の同じ箇所を上書き）
 【やることメモ】隠しファイル.envの11行目～16行目に以下を上書きする
 
 これをやっておかないとDBエラーが起きてしまうので必ずやろう！
@@ -394,7 +394,7 @@ DB_PASSWORD=root
 ```
 ---
 
-### phpMyAdmin設定
+#### phpMyAdmin設定
 【やることメモ】phpMyAdminをインストールします！
 
 cms/publicフォルダがhtdocsになるよ
@@ -408,7 +408,7 @@ cd ..
 ```
 ---
 
-### サーバーを起動しよう
+#### サーバーを起動しよう
 ↑　で過去のコマンドから探してもいいよ
 ```
 php artisan serve --port=8080
@@ -417,7 +417,7 @@ php artisan serve --port=8080
 
 ---
 
-### ＜phpMyAdmin確認手順＞
+#### ＜phpMyAdmin確認手順＞
 - 5.1 publicフォルダ内に「phpMyAdmin-*.*.*-all-languages」フォルダが作成される 
 - 5.2 フォルダ名が長いので「phpMyAdmin」に変更
 - 5.3「Preview」でサイトを開き、URLの最後に「phpMyAdmin/index.php」をつけてEnterキーを押す
@@ -442,33 +442,33 @@ php artisan serve --port=8080
 - 【注意】Laraveのバージョンが違うとErrorになります！！
 -  コマンド打って、yes/no がでたらyes で！！
 
-#### 0. ＜＜重要＞＞cmsの中で実行
+#### 3.0 ＜＜重要＞＞cmsの中で実行
 ```
 cd cms
 ```
 
-#### 1. Laravel 10.x の場合
+#### 3.1 Laravel 10.x の場合
 #sudo composer require laravel/breeze --dev　昔のコマンド
 今はこっち↓のコマンドを使います
 ```
 composer require laravel/breeze:*
 ```
 
-#### 2. artisan コマンドを実行
+#### 3.2 artisan コマンドを実行
 ```
 php artisan breeze:install
 ```
 
-#### 3.以下が表示されます
+#### 3.3 以下が表示されます
 「 Blade with Alpine 」をキーボードの↑↓で選択して[Enter]
 
-#### 4.Dark Mode対応？
+#### 3.4 Dark Mode対応？
  Yes 選択して[Enter]
 
-#### 5.テストライブラリの選択
+#### 3.5 テストライブラリの選択
 PHPUnit を選択して[Enter]
 
-#### 6. HTML/CSS/JSをビルド（構築👉フロントで修正があるたびにビルド）
+#### 3.6 HTML/CSS/JSをビルド（構築👉フロントで修正があるたびにビルド）
 Laravelはフロント側のHTML,CSS,JSは自動で更新されない
 
 このため必ずcmsフォルダで以下のコマンドを打って更新すること！
@@ -477,7 +477,7 @@ Laravelはフロント側のHTML,CSS,JSは自動で更新されない
 npm run build
 ```
 
-#### 7．テーブル作成
+#### 3.7 テーブル作成
 ```
 php artisan migrate
 ```
@@ -485,13 +485,13 @@ php artisan migrate
 
 
 ---
-#### 8．Login画面とRegister画面にリンクを追加( 2ファイル修正)
+#### 3.8 Login画面とRegister画面にリンクを追加( 2ファイル修正)
 
 - /resources/views/auth/register.blade.php
 - /resources/views/auth/login.blade.php
 
 
-##### `<x-guest-layout>`の次「2行目」に以下を貼り付け ... 
+#### `<x-guest-layout>`の次「2行目」に以下を貼り付け ... 
 ```
 <!-- 以下を追加 -->
 @if (Route::has('login'))
@@ -698,7 +698,7 @@ require __DIR__.'/auth.php';
 
 
 
-#### (1)  /resources/views/components/collection.blade.php を作成
+#### 6.1 /resources/views/components/collection.blade.php を作成
 【やること】
 -/resources/views/components/ にはよく使うものを部品としてを入れる⇒ここだけ直せばよい(メンテナンス性アップ)
 -表示用のファイルの拡張子は必ず　.blade.php　にする⇒この拡張子にしないと使えない
@@ -712,7 +712,7 @@ require __DIR__.'/auth.php';
 ```
 
 
-#### (2)  /resources/views/components/errors.blade.php を作成 
+#### 6.2 /resources/views/components/errors.blade.php を作成 
 【やること】
 - /resources/views/components/　で新規ファイル作成⇒ファイル名は　errors.blade.php
 - 入力エラーのチェックの部品を作ろう！一つ部品を作ってそれを再利用していこう！
@@ -735,7 +735,7 @@ require __DIR__.'/auth.php';
 ```
 
 
-#### (3)  /resources/views/books.blade.php を作成
+#### 6.3 /resources/views/books.blade.php を作成
 【やること】
 - /resources/views/　で新規ファイル作成⇒ファイル名はbooks.blade.php
 - これは部品ではなくテンプレートを作るよ！
@@ -832,7 +832,7 @@ require __DIR__.'/auth.php';
 ```
 
 
-#### (4)  /resources/views/components/button.blade.php を作成
+#### 6.4 /resources/views/components/button.blade.php を作成
 - /resources/views/components/　で新規ファイル作成⇒ファイル名はbutton.blade.php
 - 以下のコードを貼り付ける
 ```
@@ -841,7 +841,7 @@ require __DIR__.'/auth.php';
 </button>
 ```
 
-#### (5)  componentファイルとbladeファイルをBuild!!
+#### 6.5 componentファイルとbladeファイルをBuild!!
 【やること】
 - bladeファイルとcomponentファイルを合体させます
 - JS/CSS(TailwindCSS)も同時にBuildされます
@@ -862,7 +862,7 @@ npm run build
 - Controller　には、PHPやJSで書いていたif文、for文などでcodingしていた処理を書きます！
 
 
-#### (1) app/Http/Controllers/BookController.php を開く
+#### 7.1 app/Http/Controllers/BookController.php を開く
 - このControllerでValidatorを使えるようにする
 - このControllerでAuthを使えるようにする
 
@@ -881,7 +881,7 @@ use Auth;       //この2行を追加！
 ```
 
 
-#### (2) /app/Http/Controllers/BookController.php を開く
+#### 7.2  /app/Http/Controllers/BookController.php を開く
 - [データ登録処理] public function store の中に以下を追加
 【Tips】public function storeについて…
 -　store(Request $request) この書き方はお作法なので丸暗記
@@ -941,7 +941,7 @@ public function store(Request $request)
 
 ---
 ## 【Laravel 8回目：コントローラー②（表示処理）】(24：17)
-#### (3) /app/Http/Controllers/BookController.php を開く
+#### 8.1 /app/Http/Controllers/BookController.php を開く
 - [データ取得・表示処理] public function index() 内に以下を追加
 
 ```
@@ -964,7 +964,7 @@ public function index() {
 -  orderByメソッドとgetメソッドでデータを　アロー　->　でつなぐことによって組み合わせて実施している
 
 
-#### (4)  /resources/views/books.blade.php を開く
+#### 8.2 /resources/views/books.blade.php を開く
 - books.blade.php の ***「右側エリア」*** を全て上書き！！
 ```
     <!--右側エリア[START]-->
@@ -990,7 +990,7 @@ public function index() {
 
 ---
 ## 【Laravel 9回目： コントローラー③（削除処理）】(19:20)
-#### (5)  /resources/views/components/collection.blade.php を開く
+#### 9.1 /resources/views/components/collection.blade.php を開く
 - collection.blade.php 内のcomponentを以下CODEに ***全て上書き！！*** 
 ```
 <!-- 本: 削除ボタン -->
@@ -1044,7 +1044,7 @@ public function index() {
 
 
 
-#### (6)  /app/Http/Controllers/BookController.php を開く
+#### 9.2 /app/Http/Controllers/BookController.php を開く
 - [データ削除処理] public function destroy に以下コードを追加
 ```
 public function destroy(Book $book)
@@ -1073,12 +1073,12 @@ php artisan route:list -v
 
 ---
 ## 【Laravel 10回目： コントローラー④（更新処理）】(17:10)
-### 8. 更新機能を作成 
+### 10. 更新機能を作成 
 【やること】
 -  まず更新画面を作ろう！登録画面と更新画面は似ているので登録画面をコピーして使うことが多い。基本的には登録する項目と更新する項目は同じなので、再利用することが多い
 -  流れとしては、すでにテーブルに登録されてるデータを1レコード分を抽出して、入力項目に変数を埋め込んで表示されます（ちょっと分からんけど）
 
-#### (1) [更新機能] view画面を作成
+#### 10.1 [更新機能] view画面を作成
 - /resources/views/booksedit.blade.php を新規作成
 - 以下コードを貼り付ける
 ```
@@ -1173,7 +1173,7 @@ php artisan route:list -v
 ```
 
 
-#### (2)  [更新機能] コントローラー
+#### 10.2  [更新機能] コントローラー
 - /app/Http/Controllers/BookController.phpを開く
 - 以下コードを ***edit*** に追加する
 ```   
@@ -1195,7 +1195,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 ```
 
 
-#### (3)  [更新機能] 更新処理
+#### 10.3  [更新機能] 更新処理
 - /app/Http/Controllers/BookController.php を開く
 - 以下コードを ***update*** メソッドに追加する
 ``` 
@@ -1240,11 +1240,11 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 ---
 ## 【Laravel 11回目： Laravel 11回目： ページネーション】(4:30)
-### 9. Pagenation機能
+### 11 Pagenation機能
 【やること】 
 -  1ページに全レコード表示すると見づらいので、1ページあたりに表示するレコード数を指定し、ページを分けることができる
 
-#### (1)  コントローラ：indexメソッドの修正
+#### 11.1  コントローラ：indexメソッドの修正
 - BookController.phpの ***indexメソッド*** に以下コードを上書き
 - paginate(3); の箇所だけ変わります
 - paginate(表示件数); ()の中に何件表示するかを書く
@@ -1260,7 +1260,7 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 ```
 
 
-#### (2)  Viewにリンクを生成するコードを追加
+#### 11.2  Viewにリンクを生成するコードを追加
 【やること】 
 - books.blade.php に 以下コードを追加します。
 - 右側エリアの一番下にページ送りを表示したいので右側エリアの最後の@endifのあとに追加
@@ -1276,24 +1276,25 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 ---
 ## 【Laravel 12回目： Auth：認証しないと見れない設定】(12:00)
+### 12 Auth設定
 【やること】 
 - ログアウトして　https://***.amazonaws.com/booksedit/2　と叩くと見えてしまう(最後の数字はbooksテーブルに存在しているレコードのIDにしてくださいね)
 - エラーは出るけれど‥‥ログインしていないのに見えてしまっている
 - この状態に対してログインしたユーザーにしか見せないようにす（PHPではセッションを使って実現していた部分）⇒Laravelはこの機能が準備してある
 - ->middleware(['auth']) を追加すれば簡単にできる
 
-#### (1)  routes/web.php を変更
+#### 12.1 routes/web.php を変更
 //本：更新画面　の　2行に　->middleware(['auth'])　を追加する
 
 
 
 【Tips】 ->middleware(['auth']) の設定方法がほかにも2つあります
 
-####--------------------------------------------
-#### 方法１．コンストラクタを追加 [ログインしていない場合にLOGIN画面へ遷移]
-####   /app/Http/Controllers/BookController.php
-####   classに追加
-####--------------------------------------------
+######--------------------------------------------
+###### 方法１．コンストラクタを追加 [ログインしていない場合にLOGIN画面へ遷移]
+######   /app/Http/Controllers/BookController.php
+######   classに追加
+######--------------------------------------------
 
 #以下[END]までの全てのコードをコピー
 
@@ -1304,11 +1305,10 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 
 #[END]--------------------------------------------
 
-#--------------------------------------------
-#  方法２． Route::groupを使ったログイン認証(web.php の中でルーティングでくくっておくやり方）
-　　
-# * 注意）上記4の「コンストラクタ」か「Route::group」のどちらかだけの記述にします。
-#--------------------------------------------
+######--------------------------------------------
+######  方法２． Route::groupを使ったログイン認証(web.php の中でルーティングでくくっておくやり方）
+###### * 注意）上記4の「コンストラクタ」か「Route::group」のどちらかだけの記述にします。
+######--------------------------------------------
 
 Route::group(['middleware' => 'auth'], function () {
    //LOGIN認証後にしか見せたくないルーティングは中に入れる
@@ -1321,12 +1321,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 ---
 ## 【Laravel  13回目：自分が登録したデータのみ（表示・更新・削除）1ｘ1】(20:00)
-### 10. ユーザーがログインしたらユーザーが登録した本のみ表示
+### 13. ユーザーがログインしたらユーザーが登録した本のみ表示
 - １ユーザー ✕ １サービス
 - phpMyAdminではなく、migrationファイルから変更することが大事！
 
 
-#### (1)  ユーザーidを登録できるようにbooksテーブルを変更
+#### 13.1 ユーザーidを登録できるようにbooksテーブルを変更
 - /database/migrations/[yyyy_mm_dd_hhiiss]_create_books_table.php に以下***１行を追加します***。
 - $table->id();　の行と　$table->string('item_name');　の行の間に追加しましょう！
 - これによってレコードを登録したのが誰なのか特定できるようになります。
@@ -1335,7 +1335,7 @@ Route::group(['middleware' => 'auth'], function () {
 $table->bigInteger('user_id'); //追加:user_id
 ```
 
-#### (2)＆(3)  テーブルをリセット＆再構築する
+#### 13.2 + 13.3 テーブルをリセット＆再構築する
 - テーブルをリセットして、再構築するコマンド
 ```
 php artisan migrate:refresh
@@ -1344,7 +1344,7 @@ php artisan migrate:refresh
 - 構造の#2に　user_id　が型　bigint(20)　で追加されている
 
 
-#### (4)  再構築されたbooksテーブルを確認 
+#### 13.4 再構築されたbooksテーブルを確認 
 【確認】 テストデータが消えている
 -  refresh　はresetして再構築しているのでテストデータが消えている⇒booksデータもuserデータも消えているので再度登録すること
 
@@ -1374,7 +1374,7 @@ exit;
 
 
 
-#### (5)  コントローラ「BooksController@index」を修正
+#### 13.5 コントローラ「BooksController@index」を修正
 - 以下indexメソッドの「Book」モデルの条件を変えます
 - 1行丸ごと変更します
 - "where('user_id',Auth::user()->id)->"　を追加して、認証してる人のAuthIDを条件に追加しています
@@ -1383,21 +1383,21 @@ exit;
 ```
 
 
-#### (6)  コントローラ「BooksController@store」に追加
+#### 13.6 コントローラ「BooksController@store」に追加
 - // Eloquentモデル　の　$books = new Book;　の下に　以下の1行を追加します
 
 ```
 $books->user_id  = Auth::user()->id; //追加のコード
 ```
 
-#### (7)  コントローラ「BooksController@update」を修正
+#### 13.7 コントローラ「BooksController@update」を修正
 - //データ更新　の　 $books = Book::find($request->id);　を以下の1行に変更します
 
 ```
 $books = Book::where('user_id',Auth::user()->id)->find($request->id);
 ```
 
-#### (8)  コントローラ「BooksController@edit」を修正
+#### 13.8 コントローラ「BooksController@edit」を修正
 - 修正範囲が多いのでeditメソッドを全消しして以下の内容で上書き
 ```
 public function edit($book_id)
@@ -1407,7 +1407,7 @@ public function edit($book_id)
 }
  ```
 
- ##### (9)  本当に自分が登録したデータのみCURDができるようになっているか確認
+ ##### 13.9 本当に自分が登録したデータのみCURDができるようになっているか確認
 - refreshコマンドでデータが消えているのでuserを2名登録し、それぞれで本を登録しましょう
 - 1人目のユーザーでログインして表示・更新・削除ができるのは自分がとうろくしたものだけになっているか確認しよう
 - 2人目のユーザーでログインして表示・更新・削除ができるのは自分がとうろくしたものだけになっているか確認しよう
