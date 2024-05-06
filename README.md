@@ -515,6 +515,7 @@ npm run build
 ```
 
 【確認】Login画面とRegister画面の右上にLoginとRegister　リンクが追加されていることを確認しよう！
+Laravelのトップ画面にLoginとRegister　リンクが追加されるタイミングが謎
 
 
 ---
