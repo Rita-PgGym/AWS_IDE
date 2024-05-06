@@ -250,6 +250,7 @@ sudo systemctl enable mariadb
 ```
 sudo systemctl is-enabled mariadb
 ```
+【確認】コンソールに　enabled　と表示されていればOK
 
 ##### DB接続確認
 ★DBが動いているか、ログインして確認しよう！
