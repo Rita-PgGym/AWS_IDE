@@ -94,24 +94,24 @@
 ※青い帯が表示されるので緑の帯になるまで待つ（少し時間がかかる）  
 
 ####  1.9  Cloud9 IDE(Integrated Development Environment統合開発環境)を設定する
-新しく作成した環境の[Cloud9 IDE]の[開く]をクリック  
-別タブに作成した開発環境の設定画面が表示される  
-上半分に表示される[Welcome]タブはタブの[×]で閉じてOK  
+- 新しく作成した環境の[Cloud9 IDE]の[開く]をクリック  
+- 別タブに作成した開発環境の設定画面が表示される  
+- 上半分に表示される[Welcome]タブはタブの[×]で閉じてOK  
 
 ####  1.10  隠しファイルを表示させる
-左のフレームの作成した環境名の横の歯車をクリック  
-[Show Hidden Files]にチェックを付ける  
-デフォルトはチェックが外れてる  
+- 左のフレームの作成した環境名の横の歯車をクリック  
+- [Show Hidden Files]にチェックを付ける  
+- デフォルトはチェックが外れてる  
 
 ####  1.11  右上の歯車をクリック
-[Preference]タブが表示される  
-左のメニューから[Experimental]をクリック  
-Auto-Save Filesのモードを[After Delay]にする(これで自動保存されるようになる）  
-[Preference]タブはタブの[×]で閉じてOK  
+- [Preference]タブが表示される  
+- 左のメニューから[Experimental]をクリック  
+- Auto-Save Filesのモードを[After Delay]にする(これで自動保存されるようになる）  
+- [Preference]タブはタブの[×]で閉じてOK  
 
 ####  1.12  (途中まで作成して中断し再開した場合はターミナル開いていない)ターミナルを開く
-下のターミナル(コマンドを打つ黒いところ)のタブのプラスをクリック  
-[New Terminal]を選択  
+- 下のターミナル(コマンドを打つ黒いところ)のタブのプラスをクリック  
+- [New Terminal]を選択  
 
 ####  1.13  ちょっとコマンドを打つ練習
 さっそくターミナルでコマンドを打ってみよう！  
@@ -137,47 +137,47 @@ https://github.com/yamazakidaisuke/GsCodeSample/blob/master/amazonLinux2023_lara
 
 ##### よく使うLinuxコマンド
 
-現在いる場所の。まわりのファイルやフォルダを表示
+- 現在いる場所の。まわりのファイルやフォルダを表示
 ```
 ls
 ```
 
-隠しファイルも含めて表示。lsとハイフンのあいだには半角スペースあり。
+- 隠しファイルも含めて表示。lsとハイフンのあいだには半角スペースあり。
 ```
 ls -a
 ```
 
-position working directory 今いる場所のパスを示してくれる
+- position working directory 今いる場所のパスを示してくれる
 ```
 pwd
 ```
 
-change directry   aaaに移動する
+- change directry   aaaに移動する
 ```
 cd aaa
 ```
 
-一つ上の階層に移動する
+- 一つ上の階層に移動する
 ```
 cd ..
 ```
 
-過去に打ったコマンドを見ることができる　↑や↓で移動できる
+- 過去に打ったコマンドを見ることができる　↑や↓で移動できる
 ```
 ↑（上向きやじるし）　↓（下向きやじるし)
 ```
 
-よく使う
+- よく使う
 ```
 php artisan serve --port=8080
 ```
 
 #### コンソール(コマンドを打つ黒いところ)が消えちゃったら…
-メニューバー｢View｣－[Console]をクリック
+メニューバー｢View｣－[Console]をクリック  
 
 #### サーバーを起動している間、コマンドが打てないじゃん…
-コンソール(コマンドを打つ黒いところ)は複数起動できる⇒タブを増やせる
-　[＋]ボタンを押して[New Terminal]をクリック
+コンソール(コマンドを打つ黒いところ)は複数起動できる⇒タブを増やせる  
+　[＋]ボタンを押して[New Terminal]をクリック  
 
 
 ### ここから本番です！
@@ -186,6 +186,7 @@ php artisan serve --port=8080
 ```
 sudo yum list installed | grep mariadb
 ```
+
 
 ####  2.2  Apache, MariaDBの起動
 ```
@@ -197,6 +198,7 @@ sudo mysql_secure_installation
 ```
 ※最初コマンドで聞かれたら「空」のPasswordでEnter、Yes/Noを聞かれたら基本「Y」、NewPasswordは「root」にする。
 
+
 ####  2.3  MaridaDBの自動起動を有効化
 ```
 sudo systemctl enable mariadb
@@ -205,6 +207,9 @@ sudo systemctl enable mariadb
 ```
 sudo systemctl is-enabled mariadb
 ```
+【確認】コンソールに　enabled　と表示されていればOK　
+
+
 ####  2.4  DB接続確認
 【確認】  
 -  DBが動いているか、ログインして確認しよう！  
@@ -222,9 +227,7 @@ root
 ```
 exit;
 ```
-【確認】コンソールに　enabled　と表示されていればOK　　
-
----
+【確認】コンソールに　Bye　と表示されていればOK  
 
 
 ####  2.5  Composerインストール(3行一気にOK) 　【補足】1行ずつやる
@@ -243,7 +246,6 @@ composer
 【確認】ターミナル画面を少し上にスクロールして　COMPOSERという文字がでっかく表示されていればOK！
 
 
-
 ####  2.6  Laravelインストール
 - バージョン指定する場合 → composer create-project "laravel/laravel=10.*" cms
 - バージョン指定ない場合 → composer create-project laravel/laravel cms
@@ -260,8 +262,8 @@ sudo composer update
 
 
 ####  2.8  BuiltInサーバーを起動：動作確認
-BuiltInサーバー(Apache Webサーバーみたいなもの）を起動しよう！
-cmsフォルダで実行すること
+- BuiltInサーバー(Apache Webサーバーみたいなもの）を起動しよう！  
+- cmsフォルダで実行すること  
 ```
 php artisan serve --port=8080
 ```
@@ -269,11 +271,11 @@ php artisan serve --port=8080
 
 ####  2.9  Webサーバー＆Laravel画面の確認
 BuiltInサーバーが立ち上がっているか確認する
-- 4.1  [Preview]ボタン → [Preview Running Application]を選択
-- 4.1.5  Laravelの画面がコンソールの横に表示されるので別タブボタンを押して別タブで開こう！
-- 4.2  /resouces/views/welcome.blade.php を編集して確認しよう！　h1タグなどで文字列を表示してみよう
-- 4.3  ブラウザ・更新で確認 →　変更確認できればOK
-- 4.4  4.2で変更したところは戻しておくこと
+①  [Preview]ボタン → [Preview Running Application]を選択
+②　Laravelの画面がコンソールの横に表示されるので別タブボタンを押して別タブで開こう！
+③　/resouces/views/welcome.blade.php を編集して確認しよう！　h1タグなどで文字列を表示してみよう
+④　ブラウザ・更新で確認 →　変更確認できればOK
+⑤　③で変更したところは戻しておくこと
 
 #### サーバーを起動している間、コマンドが打てないじゃん…
 コンソール(コマンドを打つ黒いところ)は複数起動できる⇒タブを増やせる
