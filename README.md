@@ -589,9 +589,13 @@ php artisan make:model Book -cr
 - テーブル名　終わりにsが付く　（例）users、books、items
 - モデル名　終わりのsをとって先頭文字を大文字にする　　（例）User、Book、Item
 - 上記のコマンドで2つのファイルが生成される
+- 
 　　/app/models/Book.php
+  
 　　/app/Http/Controllers/BookController.php
+  
 - make:model の後のオプション
+  
 　-cr　CRUDを兼ね備えたcontrollerを作る
  
 
