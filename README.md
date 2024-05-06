@@ -1302,7 +1302,8 @@ Route::get('/booksedit/{book}', [BookController::class,"edit"])->name('edit');  
 Route::group(['middleware' => 'auth'], function () {  
    //LOGIN認証後にしか見せたくないルーティングは中に入れる  
    //...  
-});
+}  
+);  
 
 #[END]--------------------------------------------
 
@@ -1310,7 +1311,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 ---
 ## 【Laravel  13回目：自分が登録したデータのみ（表示・更新・削除）1ｘ1】(20:00)
-### 13. ユーザーがログインしたらユーザーが登録した本のみ表示
+### 13. ユーザーがログインしたらユーザーが登録した本のみ表示  
+【やること】  
+- 今は、他の人が登録したデータも見れてしまうので自分が登録したデータを自分しか見られないようにする
 - １ユーザー ✕ １サービス
 - phpMyAdminではなく、migrationファイルから変更することが大事！
 
@@ -1367,7 +1370,7 @@ exit;
 ####  13.5  コントローラ「BooksController@index」を修正
 - 以下indexメソッドの「Book」モデルの条件を変えます
 - 1行丸ごと変更します
-- "where('user_id',Auth::user()->id)->"　を追加して、認証してる人のAuthIDを条件に追加しています
+- "where('user_id',Auth::user()->id)->"　を追加して、認証してる人(ログインしている人)のAuthIDを条件に追加しています
 ```
  $books = Book::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
 ```
@@ -1382,7 +1385,8 @@ $books->user_id  = Auth::user()->id; //追加のコード
 ---
 
 ####  13.7  コントローラ「BooksController@update」を修正
-- //データ更新　の　 $books = Book::find($request->id);　を以下の1行に変更します
+-  ログインしているユーザーのデータしか更新できないようにする
+-  //データ更新　の　 $books = Book::find($request->id);　を以下の1行に変更します
 
 ```
 $books = Book::where('user_id',Auth::user()->id)->find($request->id);
@@ -1390,7 +1394,7 @@ $books = Book::where('user_id',Auth::user()->id)->find($request->id);
 ---
 
 ####  13.8  コントローラ「BooksController@edit」を修正
-- 修正範囲が多いのでeditメソッドを全消しして以下の内容で上書き
+- 修正範囲が多いのでeditメソッドを全消しして。以下の内容で上書き
 ```
 public function edit($book_id)
 {
@@ -1402,8 +1406,8 @@ public function edit($book_id)
 
  #####  13.9  本当に自分が登録したデータのみCURDができるようになっているか確認
 - refreshコマンドでデータが消えているのでuserを2名登録し、それぞれで本を登録しましょう
-- 1人目のユーザーでログインして表示・更新・削除ができるのは自分がとうろくしたものだけになっているか確認しよう
-- 2人目のユーザーでログインして表示・更新・削除ができるのは自分がとうろくしたものだけになっているか確認しよう
+- 1人目のユーザーでログインして表示・更新・削除ができるのは自分が登録したものだけが表示・更新・削除できるようになっているか確認しよう
+- 2人目のユーザーでログインして表示・更新・削除ができるのは自分が登録したものだけが表示・更新・削除できるようになっているか確認しよう
 
 
 
