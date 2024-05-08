@@ -458,6 +458,8 @@ Laravelはフロント側のHTML,CSS,JSは自動で更新されない
 ```
 npm run build
 ```
+ここでLaravelのトップ画面の右上に [Log in]   [Register]  が表示されるようになる 
+
 ---
 
 ####  3.5  テーブル作成
