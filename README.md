@@ -153,7 +153,7 @@ node -v
 https://github.com/yamazakidaisuke/GsCodeSample/blob/master/amazonLinux2023_laravel.md
 
 ##### よく使うLinuxコマンド
-
+以下のコマンドを打ってみよう！
 - 現在いる場所の。まわりのファイルやフォルダを表示
 ```
 ls
@@ -169,6 +169,13 @@ ls -a
 pwd
 ```
 
+- 過去に打ったコマンドを見ることができる　↑や↓で移動できる
+```
+↑（上向きやじるし）　↓（下向きやじるし)
+```
+
+##### よく使うLinuxコマンドだけどこれは今は打たないでね
+
 - change directry   aaaに移動する
 ```
 cd aaa
@@ -179,12 +186,7 @@ cd aaa
 cd ..
 ```
 
-- 過去に打ったコマンドを見ることができる　↑や↓で移動できる
-```
-↑（上向きやじるし）　↓（下向きやじるし)
-```
-
-- よく使う
+- サーバーを立ち上げる
 ```
 php artisan serve --port=8080
 ```
