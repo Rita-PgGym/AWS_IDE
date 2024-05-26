@@ -253,14 +253,18 @@ exit;
 
 ---
 
-####  2.5  Composerインストール(3行一気にOK) 
+####  2.5  Composerインストール(3行一気にうやるとうまくいかないので2行やって、その次に1行やる) 
 
 ```
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/bin/composer
+```
+
+```
 composer
 ```
-【確認】2行目のコマンドでストップすることもあるが、リターンキーを押すと先に進むよ。ターミナル画面を少し上にスクロールして　COMPOSERという文字が、でっかく表示されていればOK！
+
+【確認】ターミナル画面を少し上にスクロールして　COMPOSERという文字が、でっかく表示されていればOK！
 
 ---
 
