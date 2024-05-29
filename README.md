@@ -1060,7 +1060,8 @@ php artisan route:list -v
 -  そのあと、更新処理を作ろう！
 
 ####  10.1  [更新機能] view画面を作成
-- /resources/views/booksedit.blade.php を新規作成
+【やること】
+- /resources/views/  で新規ファイル作成⇒ファイル名は booksedit.blade.php 
 - 以下コードを貼り付ける
 ```
 <!-- resources/views/booksedit.blade.php -->
