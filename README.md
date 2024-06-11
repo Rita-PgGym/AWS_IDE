@@ -276,6 +276,9 @@ composer
 ```
 composer create-project "laravel/laravel=10.*" cms 
 ```
+
+【確認】ここではLaravelのVer.10で、cmsという名前のプロジェクトを作成しました!  
+
 ---
 
 ####  2.7  ディレクトリ移動(cmsはlaravelがフォルダ名です) ※2行一気にOK
