@@ -268,7 +268,7 @@ composer
 
 ---
 
-####  2.6  Laravelインストール
+####  2.6  LaravelインストールLaravelのVer.10でcmsという名前のプロジェクトを作成する
 - バージョン指定する場合 → composer create-project "laravel/laravel=10.*" cms
 - バージョン指定ない場合 → composer create-project laravel/laravel cms
 - Laravel0.x 最新を指定 → composer create-project --prefer-dist laravel/laravel cms dev-master
