@@ -683,8 +683,8 @@ require __DIR__.'/auth.php';
 
 ####  6.1  /resources/views/components/collection.blade.php を作成
 【やること】
--/resources/views/components/ にはよく使うものを部品としてを入れる⇒ここだけ直せばよい(メンテナンス性アップ)  
--表示用のファイルの拡張子は必ず　.blade.php　にする⇒この拡張子にしないと使えない  
+- /resources/views/components/ にはよく使うものを部品としてを入れる⇒ここだけ直せばよい(メンテナンス性アップ)  
+- 表示用のファイルの拡張子は必ず　.blade.php　にする⇒この拡張子にしないと使えない  
 - /resources/views/components/　で新規ファイル作成⇒ファイル名はcollection.blade.php  
 - 以下のコードを貼り付ける  
 ```
