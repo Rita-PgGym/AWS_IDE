@@ -359,7 +359,7 @@ root [Enterキー]
 ```
 create database c9;
 ```
-【memo】Query OK, 1 row affected (0.006 sec)
+【確認】Query OK, 1 row affected ‥と表示されていればOK！
 
 ```
 exit;
