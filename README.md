@@ -359,9 +359,12 @@ root [Enterキー]
 ```
 create database c9;
 ```
+【memo】Query OK, 1 row affected (0.006 sec)
+
 ```
 exit;
 ```
+
 ---
 
 ####  2.11  .env（ファイル内の同じ箇所を上書き）
